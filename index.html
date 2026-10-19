@@ -170,7 +170,7 @@ h2 {
   to { scale: 1 1.08; }
 }
 
-/* Restored rounded gradient buttons */
+/* Original buttons — unchanged */
 .continue-button {
   display: block;
   width: min(510px, 88%);
@@ -257,6 +257,186 @@ h2 {
     animation-iteration-count: 1 !important;
   }
 }
+
+/* =================================================
+   SLIDE 3 — PINK GIFT SURPRISE
+   Separate styles so Slides 1 and 2 stay unchanged
+================================================= */
+
+#slide3 {
+  background:
+    radial-gradient(ellipse at 50% 45%, #512a59 0%, transparent 68%),
+    linear-gradient(145deg, #25152f, #3b1b43 55%, #1c1026);
+  color: #fff0fa;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+#slide3 .gift-hearts,
+#slide3 .gift-sparkles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#slide3 .slide-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 600px;
+}
+
+#slide3 .gift-eyebrow {
+  margin: 0 0 28px;
+  color: #f8d9ef;
+  font-size: clamp(12px, 3.5vw, 17px);
+  letter-spacing: 4px;
+}
+
+#slide3 .gift-photo {
+  display: block;
+  width: 100%;
+  max-width: 560px;
+  aspect-ratio: 1.6 / 1;
+  object-fit: cover;
+  margin: 0 auto 28px;
+  border-radius: 24px;
+  box-shadow: 0 12px 35px rgba(255,154,211,.22);
+}
+
+#slide3 h2 {
+  color: #ffe3f3;
+  font-size: clamp(30px, 7vw, 46px);
+  line-height: 1.15;
+  text-shadow: 0 0 22px rgba(255,130,204,.3);
+}
+
+#slide3 .gift-subtitle {
+  max-width: 520px;
+  margin: 24px auto;
+  color: #f8dff0;
+  font-size: clamp(17px, 4.5vw, 23px);
+  line-height: 1.65;
+}
+
+#slide3 .open-gift-button {
+  display: block;
+  width: 100%;
+  min-height: 76px;
+  margin: 34px auto 0;
+  padding: 16px 12px;
+  border: 2px solid #fff0fa;
+  border-radius: 40px;
+  background: linear-gradient(110deg, #ff58ad, #d81779);
+  color: white;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(16px, 4.5vw, 24px);
+  font-weight: bold;
+  line-height: 1.35;
+  box-shadow:
+    0 0 18px rgba(255,86,183,.65),
+    0 0 32px rgba(255,125,211,.28);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform .2s ease;
+}
+
+#slide3 .open-gift-button:active {
+  transform: scale(.97);
+}
+
+#slide3 .gift-footer {
+  margin: 28px 0 0;
+  color: #f4d9ee;
+  font-size: 15px;
+}
+
+#slide3 .gift-previous {
+  display: block;
+  margin: 18px auto 0;
+  padding: 10px 18px;
+  border: 1px solid rgba(255,210,242,.45);
+  border-radius: 24px;
+  background: rgba(25,12,35,.4);
+  color: #ffe9f8;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#slide3 .float-heart {
+  position: absolute;
+  bottom: -50px;
+  color: #ff69b4;
+  text-shadow: 0 0 12px rgba(255,80,180,.8);
+  animation: giftHeartFloat linear infinite;
+  opacity: 0;
+}
+
+@keyframes giftHeartFloat {
+  0% {
+    transform: translateY(0) rotate(-12deg) scale(.7);
+    opacity: 0;
+  }
+  15% { opacity: .9; }
+  80% { opacity: .75; }
+  100% {
+    transform: translateY(-115vh) rotate(20deg) scale(1.25);
+    opacity: 0;
+  }
+}
+
+#slide3 .gift-sparkle {
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  color: #ffd36b;
+  font-size: 20px;
+  text-shadow: 0 0 12px #ffb6e3;
+  animation: giftSparkleBurst 1.5s ease-out forwards;
+}
+
+@keyframes giftSparkleBurst {
+  0% {
+    transform: translate(0,0) scale(.2) rotate(0);
+    opacity: 0;
+  }
+  15% { opacity: 1; }
+  100% {
+    transform:
+      translate(var(--spark-x),var(--spark-y))
+      scale(1.5) rotate(160deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 380px) {
+  #slide3 .slide-content { width: 100%; }
+  #slide3 .gift-photo { border-radius: 18px; }
+  #slide3 .open-gift-button {
+    min-height: 66px;
+    padding: 13px 8px;
+    font-size: 16px;
+  }
+}
+
+@media (max-height: 720px) {
+  #slide3 { padding-top: 20px; padding-bottom: 20px; }
+  #slide3 .gift-eyebrow { margin-bottom: 12px; }
+  #slide3 .gift-photo { margin-bottom: 18px; }
+  #slide3 .gift-subtitle { margin: 15px auto; }
+  #slide3 .open-gift-button { margin-top: 20px; }
+  #slide3 .gift-footer { margin-top: 15px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #slide3 .float-heart {
+    animation-duration: 12s;
+  }
+}
 </style>
 </head>
 
@@ -264,7 +444,7 @@ h2 {
 <div class="stars" id="stars" aria-hidden="true"></div>
 <div id="butterflies" aria-hidden="true"></div>
 
-<!-- SLIDE 1 -->
+<!-- SLIDE 1 — ORIGINAL CONTENT PRESERVED -->
 <section class="slide active" id="slide1">
   <div class="slide-content">
     <p class="eyebrow">A little surprise for you</p>
@@ -288,7 +468,7 @@ h2 {
   </div>
 </section>
 
-<!-- SLIDE 2 -->
+<!-- SLIDE 2 — ORIGINAL CONTENT PRESERVED -->
 <section class="slide" id="slide2">
   <div class="slide-content">
     <p class="eyebrow">✦ A little world made for you ✦</p>
@@ -326,8 +506,51 @@ h2 {
   </div>
 </section>
 
+<!-- SLIDE 3 — PINK GIFT SURPRISE -->
+<section class="slide" id="slide3">
+
+  <div class="gift-hearts" id="giftHearts" aria-hidden="true"></div>
+  <div class="gift-sparkles" id="giftSparkles" aria-hidden="true"></div>
+
+  <div class="slide-content">
+    <p class="gift-eyebrow">✦ A LITTLE SURPRISE ✦</p>
+
+    <img
+      class="gift-photo"
+      src="gift-box.jpg.jpg"
+      alt="A beautiful pink birthday gift box"
+    >
+
+    <h2>A Little Gift for You 💗</h2>
+
+    <p class="gift-subtitle">
+      There's something special waiting inside...
+    </p>
+
+    <button
+      class="open-gift-button"
+      type="button"
+      onclick="burstGiftSparkles()"
+    >
+      ✨ TAP TO OPEN THE BOX 🎁
+    </button>
+
+    <p class="gift-footer">
+      ♡ Made with love, just for you ♡
+    </p>
+
+    <button
+      class="gift-previous"
+      type="button"
+      onclick="showSlide(2)"
+    >
+      ← Previous
+    </button>
+  </div>
+</section>
+
 <script>
-  // Twinkling stars
+  // Twinkling stars — original code
   const stars = document.getElementById("stars");
 
   for (let i = 0; i < 65; i++) {
@@ -340,7 +563,7 @@ h2 {
     stars.appendChild(star);
   }
 
-  // Flying blue butterflies
+  // Flying blue butterflies — original code
   const butterflyArea = document.getElementById("butterflies");
 
   const butterflySVG = `
@@ -383,7 +606,70 @@ h2 {
     butterflyArea.appendChild(butterfly);
   }
 
-  // Slide navigation
+  // Slide 3: floating pink hearts
+  (function createGiftHearts() {
+    const area = document.getElementById("giftHearts");
+    if (!area) return;
+
+    const hearts = ["♡", "♥", "💗", "💕", "💖"];
+
+    for (let i = 0; i < 22; i++) {
+      const heart = document.createElement("span");
+      heart.className = "float-heart";
+      heart.textContent = hearts[i % hearts.length];
+
+      heart.style.left = Math.random() * 96 + "%";
+      heart.style.fontSize = (14 + Math.random() * 20) + "px";
+      heart.style.animationDuration = (8 + Math.random() * 9) + "s";
+      heart.style.animationDelay = (-Math.random() * 16) + "s";
+
+      area.appendChild(heart);
+    }
+  })();
+
+  // Slide 3: pink and gold sparkle burst
+  function burstGiftSparkles() {
+    const area = document.getElementById("giftSparkles");
+    if (!area) return;
+
+    // Prevent old effects from accumulating after repeated taps.
+    area.replaceChildren();
+
+    const symbols = ["✦", "✧", "✨", "⋆", "✶"];
+    const colors = ["#ffd36b", "#ffb6df", "#fff0a8", "#ff79c6"];
+
+    for (let i = 0; i < 55; i++) {
+      const sparkle = document.createElement("span");
+      sparkle.className = "gift-sparkle";
+      sparkle.textContent = symbols[
+        Math.floor(Math.random() * symbols.length)
+      ];
+
+      sparkle.style.color =
+        colors[Math.floor(Math.random() * colors.length)];
+
+      sparkle.style.setProperty(
+        "--spark-x",
+        (Math.random() * 560 - 280) + "px"
+      );
+
+      sparkle.style.setProperty(
+        "--spark-y",
+        (Math.random() * 600 - 300) + "px"
+      );
+
+      sparkle.style.animationDelay =
+        (Math.random() * 0.35) + "s";
+
+      area.appendChild(sparkle);
+
+      sparkle.addEventListener("animationend", function() {
+        sparkle.remove();
+      });
+    }
+  }
+
+  // Slide navigation — original code
   function showSlide(number) {
     const target = document.getElementById("slide" + number);
 
