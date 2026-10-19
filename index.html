@@ -3,9 +3,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#07152f">
-<title>A Little Universe 💙</title>
+<title>A Little World Made for You 💙</title>
 
 <style>
 * {
@@ -16,323 +16,506 @@ html, body {
   margin: 0;
   width: 100%;
   min-height: 100%;
-  background: #07152f;
 }
 
 body {
-  font-family: Georgia, serif;
-  color: #f5f9ff;
-}
-
-.slide {
-  position: relative;
-  width: 100%;
   min-height: 100vh;
   min-height: 100svh;
-  display: grid;
-  place-items: center;
-  padding: 30px 22px;
-  overflow: hidden;
-  isolation: isolate;
-  text-align: center;
+  overflow-x: hidden;
+  color: white;
+  font-family: Georgia, "Times New Roman", serif;
   background:
-    radial-gradient(ellipse at 25% 25%,
-      rgba(74, 156, 235, .42), transparent 48%),
-    radial-gradient(ellipse at 80% 75%,
-      rgba(42, 112, 190, .35), transparent 48%),
-    linear-gradient(145deg,
-      #07152f 0%,
-      #102c54 38%,
-      #244e7e 70%,
-      #0a1935 100%);
+    radial-gradient(ellipse at 50% 45%, #183967 0%, transparent 58%),
+    linear-gradient(145deg, #020817, #0b2043 55%, #07152f);
 }
 
-.stars {
-  position: absolute;
+.stars, #butterflies {
+  position: fixed;
   inset: 0;
-  z-index: -1;
+  overflow: hidden;
   pointer-events: none;
-  background-image:
-    radial-gradient(circle, #ffffff 1px, transparent 1.5px),
-    radial-gradient(circle, #a7ddff 1px, transparent 1.7px),
-    radial-gradient(circle, #78baff 1px, transparent 1.6px);
-  background-size: 71px 83px, 109px 127px, 157px 143px;
-  background-position: 12px 23px, 51px 17px, 83px 61px;
-  animation: twinkle 4s ease-in-out infinite alternate;
+}
+
+.stars { z-index: 0; }
+#butterflies { z-index: 1; }
+
+.star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #eaf6ff;
+  box-shadow: 0 0 8px #8bcaff;
+  animation: twinkle 2.5s ease-in-out infinite alternate;
 }
 
 @keyframes twinkle {
-  from { opacity: .45; }
-  to { opacity: 1; }
+  from { opacity: .2; transform: scale(.7); }
+  to { opacity: 1; transform: scale(1.4); }
 }
 
-.butterfly-field {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.butterfly {
-  position: absolute;
-  left: var(--x);
-  top: var(--y);
-  width: var(--size);
-  height: var(--size);
-  opacity: var(--opacity);
-  filter: drop-shadow(0 0 8px rgba(91, 185, 255, .8));
-  animation:
-    wander var(--duration) ease-in-out var(--delay) infinite alternate;
-  will-change: transform;
-}
-
-.butterfly svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-  animation: flutter var(--flap) ease-in-out infinite alternate;
-  transform-origin: center;
-}
-
-.butterfly .wing {
-  fill: url(#blueWings);
-  stroke: #b9e8ff;
-  stroke-width: .8;
-}
-
-.butterfly .body {
-  fill: #e2f6ff;
-  stroke: none;
-}
-
-@keyframes flutter {
-  from { transform: scaleX(.48) rotate(-5deg); }
-  to { transform: scaleX(1) rotate(5deg); }
-}
-
-/* Each butterfly has a different drifting route. */
-@keyframes wander {
-  0% {
-    transform: translate3d(0, 0, 0) rotate(-12deg);
-  }
-  22% {
-    transform: translate3d(var(--dx1), var(--dy1), 0) rotate(12deg);
-  }
-  48% {
-    transform: translate3d(var(--dx2), var(--dy2), 0) rotate(-8deg);
-  }
-  73% {
-    transform: translate3d(var(--dx3), var(--dy3), 0) rotate(15deg);
-  }
-  100% {
-    transform: translate3d(var(--dx4), var(--dy4), 0) rotate(-10deg);
-  }
-}
-
-.content {
+/* Both slides share the same theme */
+.slide {
+  display: none;
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 430px;
-  animation: appear 1.5s ease both;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 38px 20px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-@keyframes appear {
-  from { opacity: 0; transform: translateY(12px); }
+.slide.active {
+  display: flex;
+  animation: fadeIn .65s ease both;
+}
+
+.slide-content {
+  width: 100%;
+  max-width: 560px;
+  margin: auto;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-.moon {
-  font-size: 48px;
-  margin-bottom: 18px;
-  filter: drop-shadow(0 0 15px #80caff);
-}
-
 .eyebrow {
-  color: #c1e4ff;
+  margin: 0 0 24px;
+  color: #b8ddff;
+  font-family: Arial, sans-serif;
   font-size: 11px;
   line-height: 1.8;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
   text-transform: uppercase;
 }
 
 h1 {
-  margin: 20px 0;
-  font-size: clamp(34px, 9vw, 47px);
-  line-height: 1.23;
+  margin: 0;
+  color: #f5faff;
+  font-size: clamp(36px, 9vw, 55px);
+  line-height: 1.16;
   font-weight: normal;
-  color: #f4f9ff;
-  text-shadow: 0 0 24px rgba(111, 190, 255, .65);
+  text-shadow: 0 0 25px rgba(112,184,255,.4);
 }
 
-.message {
-  max-width: 340px;
-  margin: 0 auto;
-  color: #e0edff;
-  font-size: 16px;
-  line-height: 1.9;
+h2 {
+  margin: 0;
+  color: #f5faff;
+  font-size: clamp(32px, 8vw, 49px);
+  line-height: 1.2;
+  font-weight: normal;
+  text-shadow: 0 0 20px rgba(112,184,255,.3);
+}
+
+.subtitle {
+  max-width: 430px;
+  margin: 22px auto 0;
+  color: #c8dcf6;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.85;
 }
 
 .heart {
-  margin-top: 20px;
-  color: #b5e3ff;
-  font-size: 28px;
-  animation: pulse 1.8s ease-in-out infinite;
+  margin: 18px 0;
+  color: #c9e6ff;
+  font-size: 49px;
+  line-height: 1.25;
+  text-shadow: 0 0 18px rgba(115,185,255,.55);
+  animation: heartbeat 2s ease-in-out infinite;
 }
 
-@keyframes pulse {
-  50% { transform: scale(1.18); }
+@keyframes heartbeat {
+  0%,100% { transform: scale(1); }
+  15% { transform: scale(1.1); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.06); }
 }
 
-.continue {
-  margin-top: 25px;
-  min-height: 48px;
-  max-width: 100%;
-  padding: 14px 24px;
-  border: 1px solid rgba(198, 231, 255, .85);
-  border-radius: 40px;
-  background: linear-gradient(135deg, #286ba9, #506fb7);
+/* Moving butterflies */
+.butterfly {
+  position: absolute;
+  left: var(--left);
+  top: var(--top);
+  width: var(--size);
+  height: var(--size);
+  opacity: 0;
+  animation: butterflyFly var(--duration) var(--delay) ease-in-out infinite;
+}
+
+.butterfly svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 0 7px rgba(94,174,255,.65));
+  animation: wingFlap .8s ease-in-out infinite alternate;
+}
+
+@keyframes butterflyFly {
+  0% {
+    opacity: 0;
+    transform: translate(0,0) rotate(-15deg);
+  }
+  10% { opacity: .9; }
+  25% { transform: translate(var(--x1),var(--y1)) rotate(18deg); }
+  50% { transform: translate(var(--x2),var(--y2)) rotate(-12deg); }
+  75% { transform: translate(var(--x3),var(--y3)) rotate(22deg); }
+  90% { opacity: .85; }
+  100% {
+    opacity: 0;
+    transform: translate(var(--x4),var(--y4)) rotate(-15deg);
+  }
+}
+
+@keyframes wingFlap {
+  from { scale: 1 .85; }
+  to { scale: 1 1.08; }
+}
+
+/* Matching mini birthday cake buttons */
+.cake-button {
+  position: relative;
+  display: block;
+  width: min(290px, 84vw);
+  height: 112px;
+  margin: 38px auto 20px;
+  padding: 0;
+  border: 3px solid #eaf6ff;
+  border-radius: 15px 15px 20px 20px;
+  background:
+    linear-gradient(
+      to bottom,
+      #65b5ff 0,
+      #65b5ff 17px,
+      #3989e8 18px,
+      #3989e8 55px,
+      #f4fbff 56px,
+      #f4fbff 62px,
+      #78bfff 63px,
+      #236fc5 100%
+    );
+  box-shadow:
+    0 8px 0 #103b73,
+    0 15px 28px rgba(49,139,255,.28),
+    inset 0 -5px 0 rgba(4,35,85,.2);
   color: white;
-  font-family: inherit;
-  font-size: 15px;
   cursor: pointer;
-  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform .2s ease, box-shadow .2s ease;
 }
 
-.continue:focus-visible {
-  outline: 2px solid white;
-  outline-offset: 4px;
+.cake-top {
+  position: absolute;
+  z-index: 2;
+  top: -10px;
+  left: -2px;
+  right: -2px;
+  height: 31px;
+  border: 2px solid #fff;
+  border-radius: 50% 50% 15px 15px / 55% 55% 35% 35%;
+  background: #fffdfb;
+  box-shadow: 0 4px 0 #c5e6ff;
+}
+
+.cake-top::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 13px;
+  height: 15px;
+  background:
+    radial-gradient(ellipse at 10px 0, #fffdfb 0 10px, transparent 10.5px)
+    0 0 / 39px 16px repeat-x;
+}
+
+.cake-top::after {
+  content: "";
+  position: absolute;
+  top: 17px;
+  left: 8%;
+  width: 14px;
+  height: 13px;
+  border-radius: 0 0 9px 9px;
+  background: #fffdfb;
+  box-shadow:
+    58px 4px 0 #fffdfb,
+    117px -1px 0 #fffdfb,
+    180px 3px 0 #fffdfb,
+    225px 0 0 #fffdfb;
+}
+
+.candle {
+  position: absolute;
+  z-index: 3;
+  top: -24px;
+  width: 7px;
+  height: 20px;
+  border-radius: 3px;
+  background: repeating-linear-gradient(
+    135deg, #7bbdff 0 3px, #fff 3px 5px
+  );
+  border: 1px solid #e7f5ff;
+}
+
+.candle-one { left: 35%; }
+.candle-two { left: 62%; top: -27px; }
+
+.candle::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 0;
+  width: 6px;
+  height: 9px;
+  border-radius: 50%;
+  background: #b5dcff;
+  box-shadow: 0 0 9px #7bbdff;
+}
+
+.cake-label {
+  position: absolute;
+  z-index: 4;
+  top: 45px;
+  left: 7px;
+  right: 7px;
+  padding: 0 3px;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-shadow: 0 2px 4px rgba(0,25,70,.55);
+}
+
+.cake-bottom {
+  position: absolute;
+  z-index: 3;
+  bottom: 4px;
+  left: 8px;
+  right: 8px;
+  height: 12px;
+  border-bottom: 5px dotted #fffdfb;
+  border-radius: 50%;
+}
+
+.cake-button::after {
+  content: "♥  ✦  ♥";
+  position: absolute;
+  z-index: 4;
+  right: 12px;
+  bottom: 8px;
+  color: #e9f5ff;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.cake-button:active {
+  transform: translateY(5px);
+  box-shadow: 0 3px 0 #103b73, 0 7px 14px rgba(49,139,255,.2);
+}
+
+.cake-button:focus-visible,
+.previous-button:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 5px;
+}
+
+/* Small previous button */
+.previous-button {
+  display: block;
+  margin: 8px auto 0;
+  padding: 10px 17px;
+  border: 1px solid rgba(202,228,255,.65);
+  border-radius: 25px;
+  background: rgba(10,32,68,.72);
+  color: #c9e6ff;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .footer {
-  margin-top: 22px;
-  color: #b4d6f7;
+  margin: 24px 0 0;
+  color: #91b9e8;
+  font-family: Arial, sans-serif;
   font-size: 10px;
   letter-spacing: 2px;
 }
 
-@media (max-height: 650px) {
+@media (max-width: 380px) {
+  .slide { padding: 28px 16px; }
+  .eyebrow { font-size: 9px; letter-spacing: 3px; }
+  .subtitle { font-size: 14px; }
+  .cake-button { width: 82vw; }
+  .cake-label { font-size: 12px; }
+}
+
+@media (max-height: 720px) {
   .slide { padding-top: 20px; padding-bottom: 20px; }
-  .moon { margin-bottom: 8px; }
-  h1 { margin: 12px 0; }
-  .heart { margin-top: 10px; }
-  .continue { margin-top: 14px; }
-  .footer { margin-top: 12px; }
+  .eyebrow { margin-bottom: 14px; }
+  .subtitle { margin-top: 13px; line-height: 1.65; }
+  .heart { margin: 10px 0; font-size: 37px; }
+  .cake-button { margin-top: 28px; height: 104px; }
+  .footer { margin-top: 16px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .stars, .butterfly, .butterfly svg, .content, .heart {
-    animation: none !important;
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }
 </style>
 </head>
 
 <body>
-<main class="slide">
-  <div class="stars" aria-hidden="true"></div>
+<div class="stars" id="stars" aria-hidden="true"></div>
+<div id="butterflies" aria-hidden="true"></div>
 
-  <svg width="0" height="0" aria-hidden="true"
-       style="position:absolute">
-    <defs>
-      <linearGradient id="blueWings" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#d8f5ff"/>
-        <stop offset="45%" stop-color="#73c8ff"/>
-        <stop offset="100%" stop-color="#477de0"/>
-      </linearGradient>
-    </defs>
-  </svg>
+<!-- SLIDE 1 -->
+<section class="slide active" id="slide1">
+  <div class="slide-content">
+    <p class="eyebrow">A little surprise for you</p>
 
-  <div class="butterfly-field" id="butterflyField"
-       aria-hidden="true"></div>
+    <h1>Happy Birthday<br>My Prince 💙</h1>
 
-  <section class="content">
-    <div class="moon">🌙</div>
-    <p class="eyebrow">A little universe, made for you</p>
-
-    <h1>Hey, Birthday My Prince👑💙</h1>
-
-    <p class="message">
-      Somewhere beneath this sky, there is one person
-      who makes my world feel a little more magical.
-      <br><br>
-      Tonight, I made a tiny universe just for you. ✨
+    <p class="subtitle">
+      To my favourite person in this whole universe,
+      you make my world a little more magical every day.
+      This little surprise is made with all my love.
     </p>
 
-    <div class="heart">♡</div>
+    <div class="heart" aria-hidden="true">♡</div>
 
-    <button class="continue" type="button"
-      onclick="alert('Our little story is just beginning! 💙')">
-      Begin our little story →
+    <button class="cake-button" type="button" onclick="showSlide(2)">
+      <span class="candle candle-one" aria-hidden="true"></span>
+      <span class="candle candle-two" aria-hidden="true"></span>
+      <span class="cake-top" aria-hidden="true"></span>
+      <span class="cake-label">Begin with more surprises →</span>
+      <span class="cake-bottom" aria-hidden="true"></span>
     </button>
 
-    <p class="footer">MADE WITH LOVE · JUST FOR YOU</p>
-  </section>
-</main>
+    <p class="footer">MADE WITH LOVE, JUST FOR YOU ✦</p>
+  </div>
+</section>
+
+<!-- SLIDE 2 -->
+<section class="slide" id="slide2">
+  <div class="slide-content">
+    <p class="eyebrow">✦ A little world made for you ✦</p>
+
+    <div class="heart" aria-hidden="true">♡</div>
+
+    <h2>Happy Birthday,<br>My Love 💙</h2>
+
+    <p class="subtitle">
+      If I could give you one thing in this world,
+      it would be the chance to see yourself through my eyes.
+    </p>
+
+    <p class="subtitle">
+      Maybe then you'd understand just how special
+      you are to me. 🦋
+    </p>
+
+    <p class="subtitle">
+      And this little universe? It's just the beginning
+      of everything I want to show you. ♡
+    </p>
+
+    <button class="cake-button" type="button" onclick="showSlide(3)">
+      <span class="candle candle-one" aria-hidden="true"></span>
+      <span class="candle candle-two" aria-hidden="true"></span>
+      <span class="cake-top" aria-hidden="true"></span>
+      <span class="cake-label">There's More for You 💌</span>
+      <span class="cake-bottom" aria-hidden="true"></span>
+    </button>
+
+    <button class="previous-button" type="button" onclick="showSlide(1)">
+      ← Previous
+    </button>
+
+    <p class="footer">MADE WITH LOVE, JUST FOR YOU ✦</p>
+  </div>
+</section>
 
 <script>
-(function () {
-  const field = document.getElementById("butterflyField");
+  // Twinkling stars
+  const stars = document.getElementById("stars");
 
-  const butterflies = [
-    { x: 8,  y: 12, size: 35, duration: 13, delay: -3, flap: .65,
-      opacity: .95, dx: [20,-9,24,-13], dy: [16,30,-12,-20] },
-    { x: 72, y: 17, size: 29, duration: 16, delay: -9, flap: .8,
-      opacity: .85, dx: [-18,-25,8,15], dy: [23,-13,30,-18] },
-    { x: 28, y: 34, size: 25, duration: 18, delay: -6, flap: .7,
-      opacity: .75, dx: [26,-12,-24,12], dy: [-20,24,-13,20] },
-    { x: 85, y: 40, size: 38, duration: 15, delay: -11, flap: .9,
-      opacity: .9, dx: [-22,-12,18,-17], dy: [20,-24,12,26] },
-    { x: 12, y: 60, size: 30, duration: 17, delay: -5, flap: .6,
-      opacity: .85, dx: [23,15,-18,10], dy: [-18,20,25,-16] },
-    { x: 65, y: 68, size: 34, duration: 14, delay: -8, flap: .75,
-      opacity: .9, dx: [-20,20,-13,18], dy: [17,-20,25,-14] },
-    { x: 42, y: 78, size: 24, duration: 19, delay: -12, flap: .85,
-      opacity: .7, dx: [18,-20,13,-8], dy: [-22,15,-18,12] },
-    { x: 90, y: 83, size: 27, duration: 16, delay: -2, flap: .7,
-      opacity: .85, dx: [-20,-14,17,-24], dy: [-17,22,-12,15] },
-    { x: 48, y: 9, size: 22, duration: 20, delay: -14, flap: .9,
-      opacity: .7, dx: [18,-13,20,-12], dy: [23,15,-20,12] },
-    { x: 3, y: 43, size: 25, duration: 15, delay: -7, flap: .65,
-      opacity: .8, dx: [22,12,-15,20], dy: [-15,22,-18,13] }
-  ];
+  for (let i = 0; i < 65; i++) {
+    const star = document.createElement("span");
+    star.className = "star";
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+    star.style.animationDelay = Math.random() * 3 + "s";
+    star.style.animationDuration = (1.5 + Math.random() * 3) + "s";
+    stars.appendChild(star);
+  }
 
-  butterflies.forEach(function (b) {
-    const el = document.createElement("span");
-    el.className = "butterfly";
+  // Blue butterflies flying around the shared background
+  const butterflyArea = document.getElementById("butterflies");
 
-    const dx = b.dx.map(n => n + "px");
-    const dy = b.dy.map(n => n + "px");
+  const butterflySVG = `
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <path d="M49 47 C29 7 4 14 13 39 C18 54 35 56 49 51"
+        fill="#79bfff" stroke="#c5e6ff" stroke-width="2"/>
+      <path d="M51 47 C71 7 96 14 87 39 C82 54 65 56 51 51"
+        fill="#a6d7ff" stroke="#e0f3ff" stroke-width="2"/>
+      <path d="M49 53 C23 44 18 70 35 77 C45 80 49 65 49 53"
+        fill="#3c91eb" stroke="#a8d7ff" stroke-width="2"/>
+      <path d="M51 53 C77 44 82 70 65 77 C55 80 51 65 51 53"
+        fill="#3c91eb" stroke="#a8d7ff" stroke-width="2"/>
+      <path d="M50 43 L50 66" stroke="#e8f6ff"
+        stroke-width="4" stroke-linecap="round"/>
+      <path d="M49 43 Q39 24 33 29 M51 43 Q61 24 67 29"
+        fill="none" stroke="#e8f6ff" stroke-width="2"
+        stroke-linecap="round"/>
+    </svg>`;
 
-    el.style.setProperty("--x", b.x + "%");
-    el.style.setProperty("--y", b.y + "%");
-    el.style.setProperty("--size", b.size + "px");
-    el.style.setProperty("--duration", b.duration + "s");
-    el.style.setProperty("--delay", b.delay + "s");
-    el.style.setProperty("--flap", b.flap + "s");
-    el.style.setProperty("--opacity", b.opacity);
+  for (let i = 0; i < 10; i++) {
+    const butterfly = document.createElement("div");
+    butterfly.className = "butterfly";
+    butterfly.innerHTML = butterflySVG;
 
-    ["dx1","dx2","dx3","dx4"].forEach((key, i) => {
-      el.style.setProperty("--" + key, dx[i]);
+    butterfly.style.setProperty("--size", (20 + Math.random() * 22) + "px");
+    butterfly.style.setProperty("--left", Math.random() * 95 + "%");
+    butterfly.style.setProperty("--top", Math.random() * 90 + "%");
+    butterfly.style.setProperty("--duration", (10 + Math.random() * 12) + "s");
+    butterfly.style.setProperty("--delay", (-Math.random() * 18) + "s");
+
+    butterfly.style.setProperty("--x1", (Math.random() * 100 - 50) + "px");
+    butterfly.style.setProperty("--y1", (Math.random() * 120 - 60) + "px");
+    butterfly.style.setProperty("--x2", (Math.random() * 160 - 80) + "px");
+    butterfly.style.setProperty("--y2", (Math.random() * 160 - 80) + "px");
+    butterfly.style.setProperty("--x3", (Math.random() * 120 - 60) + "px");
+    butterfly.style.setProperty("--y3", (Math.random() * 180 - 90) + "px");
+    butterfly.style.setProperty("--x4", (Math.random() * 180 - 90) + "px");
+    butterfly.style.setProperty("--y4", (Math.random() * 140 - 70) + "px");
+
+    butterflyArea.appendChild(butterfly);
+  }
+
+  // Slide navigation
+  function showSlide(number) {
+    document.querySelectorAll(".slide").forEach(function(slide) {
+      slide.classList.remove("active");
     });
 
-    ["dy1","dy2","dy3","dy4"].forEach((key, i) => {
-      el.style.setProperty("--" + key, dy[i]);
-    });
+    const target = document.getElementById("slide" + number);
 
-    el.innerHTML =
-      '<svg viewBox="0 0 50 50">' +
-      '<path class="wing" d="M25 23 C8 -5 -3 13 7 26 C12 33 20 29 25 26 C12 31 17 45 23 37 L25 27 Z"/>' +
-      '<path class="wing" d="M25 23 C42 -5 53 13 43 26 C38 33 30 29 25 26 C38 31 33 45 27 37 L25 27 Z"/>' +
-      '<path class="body" d="M24 19 Q25 16 26 19 L27 34 Q25 39 23 34 Z"/>' +
-      '<path d="M24 19 Q19 9 16 12 M26 19 Q31 9 34 12" fill="none" stroke="#d9f4ff" stroke-width="1"/>' +
-      '</svg>';
-
-    field.appendChild(el);
-  });
-})();
+    if (target) {
+      target.classList.add("active");
+      window.scrollTo({ top: 0, behavior: "auto" });
+    }
+  }
 </script>
 </body>
 </html>
