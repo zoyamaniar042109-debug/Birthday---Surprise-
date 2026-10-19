@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#07152f">
+<meta name="theme-color" content="#321537">
 <title>A Little World Made for You 💙</title>
 
 <style>
@@ -25,8 +25,8 @@ body {
   color: white;
   font-family: Georgia, "Times New Roman", serif;
   background:
-    radial-gradient(ellipse at 50% 45%, #183967 0%, transparent 58%),
-    linear-gradient(145deg, #020817, #0b2043 55%, #07152f);
+    radial-gradient(ellipse at 50% 45%, #52264f 0%, transparent 58%),
+    linear-gradient(145deg, #24102d, #482044 55%, #27122e);
 }
 
 .stars, #butterflies {
@@ -130,7 +130,7 @@ h2 {
   45% { transform: scale(1.06); }
 }
 
-/* Blue butterflies */
+/* Blue butterflies for the first two slides */
 .butterfly {
   position: absolute;
   left: var(--left);
@@ -170,7 +170,7 @@ h2 {
   to { scale: 1 1.08; }
 }
 
-/* Original buttons — unchanged */
+/* Existing buttons */
 .continue-button {
   display: block;
   width: min(510px, 88%);
@@ -230,15 +230,217 @@ h2 {
   letter-spacing: 2px;
 }
 
+/* =================================================
+   SLIDE 3 ONLY — PINK GIFT SURPRISE
+   ================================================= */
+
+#slide3 {
+  background:
+    radial-gradient(ellipse at 50% 38%, rgba(112,51,101,.38), transparent 65%);
+  overflow: hidden;
+}
+
+#slide3 .slide-content {
+  max-width: 600px;
+}
+
+#slide3 .eyebrow {
+  color: #f8d8ef;
+  font-size: clamp(10px, 2.8vw, 13px);
+  letter-spacing: 4px;
+  margin-bottom: 26px;
+}
+
+#slide3 h2 {
+  color: #ffe6f5;
+  font-size: clamp(32px, 7.6vw, 48px);
+  line-height: 1.2;
+  text-shadow: 0 0 18px rgba(255,133,209,.2);
+  margin-top: 25px;
+}
+
+#slide3 .subtitle {
+  color: #f4dcec;
+  font-size: clamp(17px, 4.4vw, 22px);
+  line-height: 1.6;
+  margin-top: 22px;
+}
+
+/* Gift photo */
+.gift-photo-frame {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 28px;
+  overflow: hidden;
+  background: rgba(36,12,42,.55);
+  box-shadow: 0 15px 38px rgba(10,0,20,.24);
+  line-height: 0;
+}
+
+.gift-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 28px;
+}
+
+/* Pink and gold floating hearts */
+#pink-hearts {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.floating-heart {
+  position: absolute;
+  bottom: -60px;
+  left: var(--left);
+  font-size: var(--size);
+  opacity: 0;
+  animation: heartRise var(--duration) var(--delay) linear infinite;
+  filter: drop-shadow(0 0 8px rgba(255,76,170,.6));
+}
+
+@keyframes heartRise {
+  0% {
+    transform: translateY(0) rotate(-12deg) scale(.65);
+    opacity: 0;
+  }
+  12% { opacity: .9; }
+  50% {
+    transform: translateY(-50vh) rotate(15deg) scale(1);
+    opacity: .85;
+  }
+  88% { opacity: .8; }
+  100% {
+    transform: translateY(-115vh) rotate(-18deg) scale(.8);
+    opacity: 0;
+  }
+}
+
+/* Gift opening sparkles */
+#gift-effects {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.gift-sparkle {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  color: var(--color);
+  font-size: var(--size);
+  animation: sparkleBurst 1.5s ease-out forwards;
+  text-shadow: 0 0 14px currentColor;
+}
+
+@keyframes sparkleBurst {
+  0% {
+    transform: translate(0,0) scale(.2) rotate(0deg);
+    opacity: 0;
+  }
+  15% { opacity: 1; }
+  100% {
+    transform: translate(var(--dx),var(--dy)) scale(1.4) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+/* Pink glowing open-box button */
+.gift-open-button {
+  display: block;
+  width: 100%;
+  min-height: 76px;
+  margin: 36px auto 20px;
+  padding: 17px 12px;
+  border: 3px solid #fff4fc;
+  border-radius: 50px;
+  background: linear-gradient(110deg, #ff4fac, #ed1681 65%, #bd176c);
+  color: #fff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(16px, 4.5vw, 24px);
+  font-weight: bold;
+  line-height: 1.35;
+  text-align: center;
+  box-shadow:
+    0 0 15px rgba(255,82,180,.85),
+    0 0 32px rgba(255,82,180,.55),
+    0 0 55px rgba(255,82,180,.22);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.gift-open-button:active {
+  transform: scale(.97);
+  box-shadow: 0 0 30px rgba(255,82,180,.95);
+}
+
+#gift-message {
+  display: none;
+  margin: 22px auto 0;
+  padding: 20px 16px;
+  border: 1px solid rgba(255,211,240,.45);
+  border-radius: 20px;
+  background: rgba(52,17,53,.7);
+  color: #ffe8f6;
+  font-size: clamp(18px, 4.5vw, 24px);
+  line-height: 1.7;
+  box-shadow: 0 0 22px rgba(255,97,190,.16);
+}
+
+#gift-message.show {
+  display: block;
+  animation: fadeIn .7s ease both;
+}
+
+#slide3 .previous-button {
+  border-color: rgba(255,220,244,.6);
+  background: rgba(55,20,57,.55);
+  color: #ffe4f4;
+  font-size: 15px;
+  margin-top: 28px;
+}
+
+#slide3 .footer {
+  color: #f1cce7;
+  font-size: clamp(12px, 3.5vw, 16px);
+  letter-spacing: .5px;
+  margin-top: 24px;
+}
+
 @media (max-width: 380px) {
   .slide { padding: 26px 16px; }
   .eyebrow { font-size: 9px; letter-spacing: 3px; }
   .subtitle { font-size: 16px; }
+
   .continue-button {
     width: 92%;
     min-height: 66px;
     padding: 14px 12px;
     font-size: 17px;
+  }
+
+  #slide3 .eyebrow {
+    font-size: 9px;
+    letter-spacing: 3px;
+  }
+
+  #slide3 h2 {
+    font-size: 32px;
+  }
+
+  .gift-open-button {
+    min-height: 68px;
+    font-size: 16px;
   }
 }
 
@@ -248,7 +450,13 @@ h2 {
   .subtitle { margin-top: 13px; line-height: 1.6; }
   .heart { margin: 9px 0; font-size: 37px; }
   .continue-button { margin-top: 25px; }
-  .footer { margin-top: 15px; }
+
+  #slide3 .eyebrow { margin-bottom: 14px; }
+  #slide3 h2 { margin-top: 16px; }
+  #slide3 .subtitle { margin-top: 14px; }
+  .gift-open-button { margin-top: 22px; }
+  #slide3 .previous-button { margin-top: 16px; }
+  #slide3 .footer { margin-top: 15px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -257,194 +465,16 @@ h2 {
     animation-iteration-count: 1 !important;
   }
 }
-
-/* =================================================
-   SLIDE 3 — PINK GIFT SURPRISE
-   Separate styles so Slides 1 and 2 stay unchanged
-================================================= */
-
-#slide3 {
-  background:
-    radial-gradient(ellipse at 50% 45%, #512a59 0%, transparent 68%),
-    linear-gradient(145deg, #25152f, #3b1b43 55%, #1c1026);
-  color: #fff0fa;
-  overflow: hidden;
-  isolation: isolate;
-}
-
-#slide3 .gift-hearts,
-#slide3 .gift-sparkles {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 0;
-}
-
-#slide3 .slide-content {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  max-width: 600px;
-}
-
-#slide3 .gift-eyebrow {
-  margin: 0 0 28px;
-  color: #f8d9ef;
-  font-size: clamp(12px, 3.5vw, 17px);
-  letter-spacing: 4px;
-}
-
-#slide3 .gift-photo {
-  display: block;
-  width: 100%;
-  max-width: 560px;
-  aspect-ratio: 1.6 / 1;
-  object-fit: cover;
-  margin: 0 auto 28px;
-  border-radius: 24px;
-  box-shadow: 0 12px 35px rgba(255,154,211,.22);
-}
-
-#slide3 h2 {
-  color: #ffe3f3;
-  font-size: clamp(30px, 7vw, 46px);
-  line-height: 1.15;
-  text-shadow: 0 0 22px rgba(255,130,204,.3);
-}
-
-#slide3 .gift-subtitle {
-  max-width: 520px;
-  margin: 24px auto;
-  color: #f8dff0;
-  font-size: clamp(17px, 4.5vw, 23px);
-  line-height: 1.65;
-}
-
-#slide3 .open-gift-button {
-  display: block;
-  width: 100%;
-  min-height: 76px;
-  margin: 34px auto 0;
-  padding: 16px 12px;
-  border: 2px solid #fff0fa;
-  border-radius: 40px;
-  background: linear-gradient(110deg, #ff58ad, #d81779);
-  color: white;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(16px, 4.5vw, 24px);
-  font-weight: bold;
-  line-height: 1.35;
-  box-shadow:
-    0 0 18px rgba(255,86,183,.65),
-    0 0 32px rgba(255,125,211,.28);
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-  transition: transform .2s ease;
-}
-
-#slide3 .open-gift-button:active {
-  transform: scale(.97);
-}
-
-#slide3 .gift-footer {
-  margin: 28px 0 0;
-  color: #f4d9ee;
-  font-size: 15px;
-}
-
-#slide3 .gift-previous {
-  display: block;
-  margin: 18px auto 0;
-  padding: 10px 18px;
-  border: 1px solid rgba(255,210,242,.45);
-  border-radius: 24px;
-  background: rgba(25,12,35,.4);
-  color: #ffe9f8;
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-}
-
-#slide3 .float-heart {
-  position: absolute;
-  bottom: -50px;
-  color: #ff69b4;
-  text-shadow: 0 0 12px rgba(255,80,180,.8);
-  animation: giftHeartFloat linear infinite;
-  opacity: 0;
-}
-
-@keyframes giftHeartFloat {
-  0% {
-    transform: translateY(0) rotate(-12deg) scale(.7);
-    opacity: 0;
-  }
-  15% { opacity: .9; }
-  80% { opacity: .75; }
-  100% {
-    transform: translateY(-115vh) rotate(20deg) scale(1.25);
-    opacity: 0;
-  }
-}
-
-#slide3 .gift-sparkle {
-  position: absolute;
-  left: 50%;
-  top: 48%;
-  color: #ffd36b;
-  font-size: 20px;
-  text-shadow: 0 0 12px #ffb6e3;
-  animation: giftSparkleBurst 1.5s ease-out forwards;
-}
-
-@keyframes giftSparkleBurst {
-  0% {
-    transform: translate(0,0) scale(.2) rotate(0);
-    opacity: 0;
-  }
-  15% { opacity: 1; }
-  100% {
-    transform:
-      translate(var(--spark-x),var(--spark-y))
-      scale(1.5) rotate(160deg);
-    opacity: 0;
-  }
-}
-
-@media (max-width: 380px) {
-  #slide3 .slide-content { width: 100%; }
-  #slide3 .gift-photo { border-radius: 18px; }
-  #slide3 .open-gift-button {
-    min-height: 66px;
-    padding: 13px 8px;
-    font-size: 16px;
-  }
-}
-
-@media (max-height: 720px) {
-  #slide3 { padding-top: 20px; padding-bottom: 20px; }
-  #slide3 .gift-eyebrow { margin-bottom: 12px; }
-  #slide3 .gift-photo { margin-bottom: 18px; }
-  #slide3 .gift-subtitle { margin: 15px auto; }
-  #slide3 .open-gift-button { margin-top: 20px; }
-  #slide3 .gift-footer { margin-top: 15px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  #slide3 .float-heart {
-    animation-duration: 12s;
-  }
-}
 </style>
 </head>
 
 <body>
 <div class="stars" id="stars" aria-hidden="true"></div>
 <div id="butterflies" aria-hidden="true"></div>
+<div id="pink-hearts" aria-hidden="true"></div>
+<div id="gift-effects" aria-hidden="true"></div>
 
-<!-- SLIDE 1 — ORIGINAL CONTENT PRESERVED -->
+<!-- SLIDE 1 — PRESERVED -->
 <section class="slide active" id="slide1">
   <div class="slide-content">
     <p class="eyebrow">A little surprise for you</p>
@@ -468,7 +498,7 @@ h2 {
   </div>
 </section>
 
-<!-- SLIDE 2 — ORIGINAL CONTENT PRESERVED -->
+<!-- SLIDE 2 — PRESERVED -->
 <section class="slide" id="slide2">
   <div class="slide-content">
     <p class="eyebrow">✦ A little world made for you ✦</p>
@@ -508,49 +538,53 @@ h2 {
 
 <!-- SLIDE 3 — PINK GIFT SURPRISE -->
 <section class="slide" id="slide3">
-
-  <div class="gift-hearts" id="giftHearts" aria-hidden="true"></div>
-  <div class="gift-sparkles" id="giftSparkles" aria-hidden="true"></div>
-
   <div class="slide-content">
-    <p class="gift-eyebrow">✦ A LITTLE SURPRISE ✦</p>
 
-    <img
-      class="gift-photo"
-      src="gift-box.jpg.jpg"
-      alt="A beautiful pink birthday gift box"
-    >
+    <p class="eyebrow">✦ A LITTLE SURPRISE ✦</p>
+
+    <div class="gift-photo-frame">
+      <img
+        src="gift-box.jpg..jpg"
+        alt="A beautiful pink birthday gift box"
+        class="gift-image"
+        onerror="this.onerror=null; this.alt='Gift photo could not load. Check the filename in GitHub.';"
+      >
+    </div>
 
     <h2>A Little Gift for You 💗</h2>
 
-    <p class="gift-subtitle">
+    <p class="subtitle">
       There's something special waiting inside...
     </p>
 
     <button
-      class="open-gift-button"
+      class="gift-open-button"
+      id="open-gift-button"
       type="button"
-      onclick="burstGiftSparkles()"
-    >
+      onclick="openGift()">
       ✨ TAP TO OPEN THE BOX 🎁
     </button>
 
-    <p class="gift-footer">
-      ♡ Made with love, just for you ♡
-    </p>
+    <div id="gift-message" aria-live="polite">
+      💗 Surprise, my love! 💗<br>
+      You are one of the most beautiful parts of my world.
+      This little gift comes with all my love, a thousand hugs,
+      and so many more memories waiting for us. ✨<br>
+      Happy Birthday, My Prince! 🎂💖
+    </div>
 
-    <button
-      class="gift-previous"
-      type="button"
-      onclick="showSlide(2)"
-    >
+    <p class="footer">♡ Made with love, just for you ♡</p>
+
+    <button class="previous-button" type="button"
+      onclick="showSlide(2)">
       ← Previous
     </button>
+
   </div>
 </section>
 
 <script>
-  // Twinkling stars — original code
+  // Twinkling stars — preserved
   const stars = document.getElementById("stars");
 
   for (let i = 0; i < 65; i++) {
@@ -563,7 +597,7 @@ h2 {
     stars.appendChild(star);
   }
 
-  // Flying blue butterflies — original code
+  // Flying blue butterflies — preserved
   const butterflyArea = document.getElementById("butterflies");
 
   const butterflySVG = `
@@ -606,70 +640,79 @@ h2 {
     butterflyArea.appendChild(butterfly);
   }
 
-  // Slide 3: floating pink hearts
-  (function createGiftHearts() {
-    const area = document.getElementById("giftHearts");
-    if (!area) return;
+  // Pink floating hearts for Slide 3
+  const pinkHearts = document.getElementById("pink-hearts");
+  const heartSymbols = ["💗", "💕", "💖", "♡", "💘", "✨"];
 
-    const hearts = ["♡", "♥", "💗", "💕", "💖"];
+  for (let i = 0; i < 18; i++) {
+    const heart = document.createElement("span");
+    heart.className = "floating-heart";
+    heart.textContent =
+      heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
 
-    for (let i = 0; i < 22; i++) {
-      const heart = document.createElement("span");
-      heart.className = "float-heart";
-      heart.textContent = hearts[i % hearts.length];
+    heart.style.setProperty("--left", Math.random() * 96 + "%");
+    heart.style.setProperty("--size", (17 + Math.random() * 23) + "px");
+    heart.style.setProperty("--duration", (7 + Math.random() * 9) + "s");
+    heart.style.setProperty("--delay", (-Math.random() * 15) + "s");
 
-      heart.style.left = Math.random() * 96 + "%";
-      heart.style.fontSize = (14 + Math.random() * 20) + "px";
-      heart.style.animationDuration = (8 + Math.random() * 9) + "s";
-      heart.style.animationDelay = (-Math.random() * 16) + "s";
+    pinkHearts.appendChild(heart);
+  }
 
-      area.appendChild(heart);
-    }
-  })();
-
-  // Slide 3: pink and gold sparkle burst
-  function burstGiftSparkles() {
-    const area = document.getElementById("giftSparkles");
-    if (!area) return;
-
-    // Prevent old effects from accumulating after repeated taps.
-    area.replaceChildren();
-
-    const symbols = ["✦", "✧", "✨", "⋆", "✶"];
-    const colors = ["#ffd36b", "#ffb6df", "#fff0a8", "#ff79c6"];
+  // Burst of pink and gold sparkles when the gift is tapped
+  function createGiftSparkles() {
+    const effects = document.getElementById("gift-effects");
+    const colors = ["#ffd76a", "#ff75c8", "#fff0fb", "#ffb347", "#ff4fa8"];
+    const symbols = ["✨", "✦", "💖", "✧", "★"];
 
     for (let i = 0; i < 55; i++) {
       const sparkle = document.createElement("span");
       sparkle.className = "gift-sparkle";
-      sparkle.textContent = symbols[
-        Math.floor(Math.random() * symbols.length)
-      ];
+      sparkle.textContent =
+        symbols[Math.floor(Math.random() * symbols.length)];
 
-      sparkle.style.color =
-        colors[Math.floor(Math.random() * colors.length)];
-
+      sparkle.style.setProperty("--x", (15 + Math.random() * 70) + "vw");
+      sparkle.style.setProperty("--y", (25 + Math.random() * 45) + "vh");
+      sparkle.style.setProperty("--dx", (Math.random() * 300 - 150) + "px");
+      sparkle.style.setProperty("--dy", (Math.random() * 360 - 180) + "px");
+      sparkle.style.setProperty("--size", (12 + Math.random() * 22) + "px");
       sparkle.style.setProperty(
-        "--spark-x",
-        (Math.random() * 560 - 280) + "px"
+        "--color",
+        colors[Math.floor(Math.random() * colors.length)]
       );
 
-      sparkle.style.setProperty(
-        "--spark-y",
-        (Math.random() * 600 - 300) + "px"
-      );
-
-      sparkle.style.animationDelay =
-        (Math.random() * 0.35) + "s";
-
-      area.appendChild(sparkle);
-
+      effects.appendChild(sparkle);
       sparkle.addEventListener("animationend", function() {
         sparkle.remove();
       });
     }
   }
 
-  // Slide navigation — original code
+  // Open the surprise
+  let giftOpened = false;
+
+  function openGift() {
+    createGiftSparkles();
+
+    const message = document.getElementById("gift-message");
+    const button = document.getElementById("open-gift-button");
+
+    message.classList.add("show");
+
+    if (!giftOpened) {
+      button.textContent = "💖 YOUR SURPRISE IS OPENED 💖";
+      giftOpened = true;
+    }
+
+    // Let the message be visible on smaller screens too
+    setTimeout(function() {
+      message.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+      });
+    }, 150);
+  }
+
+  // Slide navigation
   function showSlide(number) {
     const target = document.getElementById("slide" + number);
 
