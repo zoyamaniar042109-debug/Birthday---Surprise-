@@ -1,0 +1,338 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#07152f">
+<title>A Little Universe 💙</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+  background: #07152f;
+}
+
+body {
+  font-family: Georgia, serif;
+  color: #f5f9ff;
+}
+
+.slide {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 30px 22px;
+  overflow: hidden;
+  isolation: isolate;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 25% 25%,
+      rgba(74, 156, 235, .42), transparent 48%),
+    radial-gradient(ellipse at 80% 75%,
+      rgba(42, 112, 190, .35), transparent 48%),
+    linear-gradient(145deg,
+      #07152f 0%,
+      #102c54 38%,
+      #244e7e 70%,
+      #0a1935 100%);
+}
+
+.stars {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle, #ffffff 1px, transparent 1.5px),
+    radial-gradient(circle, #a7ddff 1px, transparent 1.7px),
+    radial-gradient(circle, #78baff 1px, transparent 1.6px);
+  background-size: 71px 83px, 109px 127px, 157px 143px;
+  background-position: 12px 23px, 51px 17px, 83px 61px;
+  animation: twinkle 4s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: .45; }
+  to { opacity: 1; }
+}
+
+.butterfly-field {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.butterfly {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--size);
+  height: var(--size);
+  opacity: var(--opacity);
+  filter: drop-shadow(0 0 8px rgba(91, 185, 255, .8));
+  animation:
+    wander var(--duration) ease-in-out var(--delay) infinite alternate;
+  will-change: transform;
+}
+
+.butterfly svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  animation: flutter var(--flap) ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+.butterfly .wing {
+  fill: url(#blueWings);
+  stroke: #b9e8ff;
+  stroke-width: .8;
+}
+
+.butterfly .body {
+  fill: #e2f6ff;
+  stroke: none;
+}
+
+@keyframes flutter {
+  from { transform: scaleX(.48) rotate(-5deg); }
+  to { transform: scaleX(1) rotate(5deg); }
+}
+
+/* Each butterfly has a different drifting route. */
+@keyframes wander {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(-12deg);
+  }
+  22% {
+    transform: translate3d(var(--dx1), var(--dy1), 0) rotate(12deg);
+  }
+  48% {
+    transform: translate3d(var(--dx2), var(--dy2), 0) rotate(-8deg);
+  }
+  73% {
+    transform: translate3d(var(--dx3), var(--dy3), 0) rotate(15deg);
+  }
+  100% {
+    transform: translate3d(var(--dx4), var(--dy4), 0) rotate(-10deg);
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 430px;
+  animation: appear 1.5s ease both;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.moon {
+  font-size: 48px;
+  margin-bottom: 18px;
+  filter: drop-shadow(0 0 15px #80caff);
+}
+
+.eyebrow {
+  color: #c1e4ff;
+  font-size: 11px;
+  line-height: 1.8;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 20px 0;
+  font-size: clamp(34px, 9vw, 47px);
+  line-height: 1.23;
+  font-weight: normal;
+  color: #f4f9ff;
+  text-shadow: 0 0 24px rgba(111, 190, 255, .65);
+}
+
+.message {
+  max-width: 340px;
+  margin: 0 auto;
+  color: #e0edff;
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+.heart {
+  margin-top: 20px;
+  color: #b5e3ff;
+  font-size: 28px;
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% { transform: scale(1.18); }
+}
+
+.continue {
+  margin-top: 25px;
+  min-height: 48px;
+  max-width: 100%;
+  padding: 14px 24px;
+  border: 1px solid rgba(198, 231, 255, .85);
+  border-radius: 40px;
+  background: linear-gradient(135deg, #286ba9, #506fb7);
+  color: white;
+  font-family: inherit;
+  font-size: 15px;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.continue:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 4px;
+}
+
+.footer {
+  margin-top: 22px;
+  color: #b4d6f7;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+@media (max-height: 650px) {
+  .slide { padding-top: 20px; padding-bottom: 20px; }
+  .moon { margin-bottom: 8px; }
+  h1 { margin: 12px 0; }
+  .heart { margin-top: 10px; }
+  .continue { margin-top: 14px; }
+  .footer { margin-top: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stars, .butterfly, .butterfly svg, .content, .heart {
+    animation: none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+<main class="slide">
+  <div class="stars" aria-hidden="true"></div>
+
+  <svg width="0" height="0" aria-hidden="true"
+       style="position:absolute">
+    <defs>
+      <linearGradient id="blueWings" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#d8f5ff"/>
+        <stop offset="45%" stop-color="#73c8ff"/>
+        <stop offset="100%" stop-color="#477de0"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <div class="butterfly-field" id="butterflyField"
+       aria-hidden="true"></div>
+
+  <section class="content">
+    <div class="moon">🌙</div>
+    <p class="eyebrow">A little universe, made for you</p>
+
+    <h1>Hey, Birthday Boy 💙</h1>
+
+    <p class="message">
+      Somewhere beneath this sky, there is one person
+      who makes my world feel a little more magical.
+      <br><br>
+      Tonight, I made a tiny universe just for you. ✨
+    </p>
+
+    <div class="heart">♡</div>
+
+    <button class="continue" type="button"
+      onclick="alert('Our little story is just beginning! 💙')">
+      Begin our little story →
+    </button>
+
+    <p class="footer">MADE WITH LOVE · JUST FOR YOU</p>
+  </section>
+</main>
+
+<script>
+(function () {
+  const field = document.getElementById("butterflyField");
+
+  const butterflies = [
+    { x: 8,  y: 12, size: 35, duration: 13, delay: -3, flap: .65,
+      opacity: .95, dx: [20,-9,24,-13], dy: [16,30,-12,-20] },
+    { x: 72, y: 17, size: 29, duration: 16, delay: -9, flap: .8,
+      opacity: .85, dx: [-18,-25,8,15], dy: [23,-13,30,-18] },
+    { x: 28, y: 34, size: 25, duration: 18, delay: -6, flap: .7,
+      opacity: .75, dx: [26,-12,-24,12], dy: [-20,24,-13,20] },
+    { x: 85, y: 40, size: 38, duration: 15, delay: -11, flap: .9,
+      opacity: .9, dx: [-22,-12,18,-17], dy: [20,-24,12,26] },
+    { x: 12, y: 60, size: 30, duration: 17, delay: -5, flap: .6,
+      opacity: .85, dx: [23,15,-18,10], dy: [-18,20,25,-16] },
+    { x: 65, y: 68, size: 34, duration: 14, delay: -8, flap: .75,
+      opacity: .9, dx: [-20,20,-13,18], dy: [17,-20,25,-14] },
+    { x: 42, y: 78, size: 24, duration: 19, delay: -12, flap: .85,
+      opacity: .7, dx: [18,-20,13,-8], dy: [-22,15,-18,12] },
+    { x: 90, y: 83, size: 27, duration: 16, delay: -2, flap: .7,
+      opacity: .85, dx: [-20,-14,17,-24], dy: [-17,22,-12,15] },
+    { x: 48, y: 9, size: 22, duration: 20, delay: -14, flap: .9,
+      opacity: .7, dx: [18,-13,20,-12], dy: [23,15,-20,12] },
+    { x: 3, y: 43, size: 25, duration: 15, delay: -7, flap: .65,
+      opacity: .8, dx: [22,12,-15,20], dy: [-15,22,-18,13] }
+  ];
+
+  butterflies.forEach(function (b) {
+    const el = document.createElement("span");
+    el.className = "butterfly";
+
+    const dx = b.dx.map(n => n + "px");
+    const dy = b.dy.map(n => n + "px");
+
+    el.style.setProperty("--x", b.x + "%");
+    el.style.setProperty("--y", b.y + "%");
+    el.style.setProperty("--size", b.size + "px");
+    el.style.setProperty("--duration", b.duration + "s");
+    el.style.setProperty("--delay", b.delay + "s");
+    el.style.setProperty("--flap", b.flap + "s");
+    el.style.setProperty("--opacity", b.opacity);
+
+    ["dx1","dx2","dx3","dx4"].forEach((key, i) => {
+      el.style.setProperty("--" + key, dx[i]);
+    });
+
+    ["dy1","dy2","dy3","dy4"].forEach((key, i) => {
+      el.style.setProperty("--" + key, dy[i]);
+    });
+
+    el.innerHTML =
+      '<svg viewBox="0 0 50 50">' +
+      '<path class="wing" d="M25 23 C8 -5 -3 13 7 26 C12 33 20 29 25 26 C12 31 17 45 23 37 L25 27 Z"/>' +
+      '<path class="wing" d="M25 23 C42 -5 53 13 43 26 C38 33 30 29 25 26 C38 31 33 45 27 37 L25 27 Z"/>' +
+      '<path class="body" d="M24 19 Q25 16 26 19 L27 34 Q25 39 23 34 Z"/>' +
+      '<path d="M24 19 Q19 9 16 12 M26 19 Q31 9 34 12" fill="none" stroke="#d9f4ff" stroke-width="1"/>' +
+      '</svg>';
+
+    field.appendChild(el);
+  });
+})();
+</script>
+</body>
+</html>
