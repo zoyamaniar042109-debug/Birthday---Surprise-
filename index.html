@@ -130,7 +130,7 @@ h2 {
   45% { transform: scale(1.06); }
 }
 
-/* Blue butterflies */
+/* Original blue butterflies */
 .butterfly {
   position: absolute;
   left: var(--left);
@@ -170,7 +170,7 @@ h2 {
   to { scale: 1 1.08; }
 }
 
-/* Original buttons — kept for Slides 1 and 2 */
+/* Original buttons — Slides 1 and 2 */
 .continue-button {
   display: block;
   width: min(510px, 88%);
@@ -230,10 +230,14 @@ h2 {
   letter-spacing: 2px;
 }
 
-/* Slide 3 — scoped purple gift reveal */
-#slide3 {
+/* Shared purple background for Slides 3 and 4 */
+#slide3,
+#slide4 {
   background:
     radial-gradient(ellipse at center, #63265f 0%, #35132f 65%, #180b20 100%);
+}
+
+#slide3 {
   overflow: hidden;
 }
 
@@ -243,15 +247,18 @@ h2 {
   z-index: 3;
 }
 
-#slide3 .eyebrow {
+#slide3 .eyebrow,
+#slide4 .eyebrow {
   color: #ffd1f0;
 }
 
-#slide3 h2 {
+#slide3 h2,
+#slide4 h2 {
   font-size: clamp(32px, 8vw, 45px);
   text-shadow: 0 0 20px rgba(255,128,211,.3);
 }
 
+/* Slide 3 gift photo */
 #slide3 .gift-photo {
   display: block;
   width: min(100%, 330px);
@@ -262,7 +269,8 @@ h2 {
   filter: drop-shadow(0 0 18px rgba(255,157,225,.35));
 }
 
-#slide3 .subtitle {
+#slide3 .subtitle,
+#slide4 .subtitle {
   color: #ffe0f2;
   margin-top: 14px;
 }
@@ -274,12 +282,14 @@ h2 {
   box-shadow: 0 0 22px rgba(255,133,211,.3);
 }
 
-#slide3 .previous-button {
+#slide3 .previous-button,
+#slide4 .previous-button {
   background: rgba(45,13,43,.8);
   color: #ffe0f2;
   border-color: rgba(255,220,245,.65);
 }
 
+/* Floating pink hearts */
 .pink-heart {
   position: absolute;
   z-index: 1;
@@ -304,6 +314,7 @@ h2 {
   }
 }
 
+/* Gift-opening sparkles */
 #slide3 .sparkle {
   position: absolute;
   z-index: 5;
@@ -331,24 +342,22 @@ h2 {
   display: none;
 }
 
-/* Slide 4 — video */
-#slide4 {
-  background:
-    radial-gradient(ellipse at center, #183967 0%, transparent 65%),
-    linear-gradient(145deg, #020817, #0b2043 55%, #07152f);
-}
-
+/* Slide 4 video */
 #slide4 .birthday-video {
   display: block;
   width: 100%;
   max-width: 520px;
   max-height: 55svh;
   margin: 22px auto;
-  border: 2px solid rgba(220,234,255,.8);
+  border: 2px solid rgba(255,220,245,.8);
   border-radius: 16px;
   background: #000;
   object-fit: contain;
-  box-shadow: 0 0 24px rgba(106,147,255,.25);
+  box-shadow: 0 0 24px rgba(255,133,211,.25);
+}
+
+#slide4 .footer {
+  color: #f2b8df;
 }
 
 @media (max-width: 380px) {
@@ -387,7 +396,7 @@ h2 {
 <div class="stars" id="stars" aria-hidden="true"></div>
 <div id="butterflies" aria-hidden="true"></div>
 
-<!-- SLIDE 1 — Original design -->
+<!-- SLIDE 1 — Original -->
 <section class="slide active" id="slide1">
   <div class="slide-content">
     <p class="eyebrow">A little surprise for you</p>
@@ -411,7 +420,7 @@ h2 {
   </div>
 </section>
 
-<!-- SLIDE 2 — Original design -->
+<!-- SLIDE 2 — Original -->
 <section class="slide" id="slide2">
   <div class="slide-content">
     <p class="eyebrow">✦ A little world made for you ✦</p>
@@ -449,7 +458,7 @@ h2 {
   </div>
 </section>
 
-<!-- SLIDE 3 — Gift reveal -->
+<!-- SLIDE 3 — Purple gift reveal -->
 <section class="slide" id="slide3">
   <div class="slide-content">
     <p class="eyebrow">✦ A little gift for you ✦</p>
@@ -492,7 +501,7 @@ h2 {
   </div>
 </section>
 
-<!-- SLIDE 4 — Birthday video -->
+<!-- SLIDE 4 — Same purple background as Slide 3 -->
 <section class="slide" id="slide4">
   <div class="slide-content">
     <p class="eyebrow">✦ Made with all my love ✦</p>
@@ -516,7 +525,7 @@ h2 {
       Your browser cannot play this video.
     </video>
 
-    <button class="continue-button" type="button"
+    <button class="continue-button gift-button" type="button"
       onclick="showSlide(3)">
       ← Back to the Gift
     </button>
@@ -531,7 +540,7 @@ h2 {
 </section>
 
 <script>
-// Twinkling stars — original effect
+// Twinkling stars — original
 const stars = document.getElementById("stars");
 
 for (let i = 0; i < 65; i++) {
@@ -544,7 +553,7 @@ for (let i = 0; i < 65; i++) {
   stars.appendChild(star);
 }
 
-// Flying blue butterflies — original effect
+// Flying blue butterflies — original
 const butterflyArea = document.getElementById("butterflies");
 
 const butterflySVG = `
@@ -587,7 +596,7 @@ for (let i = 0; i < 10; i++) {
   butterflyArea.appendChild(butterfly);
 }
 
-// Floating pink hearts — Slide 3 only
+// Floating pink hearts — Slide 3
 const slide3 = document.getElementById("slide3");
 
 for (let i = 0; i < 22; i++) {
@@ -642,7 +651,7 @@ function openBirthdayGift() {
   });
 }
 
-// Slide navigation
+// Slide navigation — original
 function showSlide(number) {
   const target = document.getElementById("slide" + number);
 
@@ -657,5 +666,4 @@ function showSlide(number) {
 }
 </script>
 </body>
-      </html>
-      
+</html>
