@@ -86,6 +86,7 @@ body {
 .eyebrow {
   margin: 0 0 22px;
   color: #b8ddff;
+  font-family: Georgia, "Times New Roman", serif;
   font-size: 11px;
   line-height: 1.8;
   letter-spacing: 4px;
@@ -127,7 +128,7 @@ h2 { font-size: clamp(34px, 8vw, 49px); }
   45% { transform: scale(1.06); }
 }
 
-/* Flying blue butterflies */
+/* Blue butterflies */
 .butterfly {
   position: absolute;
   left: var(--left);
@@ -164,7 +165,7 @@ h2 { font-size: clamp(34px, 8vw, 49px); }
   to { scale: 1 1.08; }
 }
 
-/* Shared buttons */
+/* Buttons */
 .continue-button {
   display: block;
   width: min(510px, 88%);
@@ -173,7 +174,7 @@ h2 { font-size: clamp(34px, 8vw, 49px); }
   padding: 16px 22px;
   border: 2px solid #dceaff;
   border-radius: 50px;
-  background: linear-gradient(110deg, #2867d9, #6578f5 55%, #b36cf2);
+  background: linear-gradient(110deg, #2867d9 0%, #6578f5 55%, #b36cf2 100%);
   color: #fff;
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(17px, 4.5vw, 24px);
@@ -187,6 +188,11 @@ h2 { font-size: clamp(34px, 8vw, 49px); }
 }
 
 .continue-button:active { transform: scale(.97); }
+
+.continue-button:disabled {
+  opacity: 1;
+  cursor: default;
+}
 
 .previous-button {
   display: block;
@@ -251,11 +257,12 @@ h2 { font-size: clamp(34px, 8vw, 49px); }
 
 @keyframes heartFloat {
   0% { transform: translateY(0) rotate(0); opacity: 0; }
-  15%,85% { opacity: .7; }
+  15% { opacity: .7; }
+  85% { opacity: .7; }
   100% { transform: translateY(-110vh) rotate(35deg); opacity: 0; }
 }
 
-.sparkle, .slide5-sparkle {
+.sparkle {
   position: absolute;
   z-index: 5;
   pointer-events: none;
@@ -267,14 +274,14 @@ h2 { font-size: clamp(34px, 8vw, 49px); }
   to { opacity: 0; transform: translate(var(--dx),var(--dy)) scale(1.6); }
 }
 
-.birthday-video, .fairy-video {
+/* Slide 4 video */
+.birthday-video {
   display: block;
   width: 100%;
   max-width: 440px;
-  max-height: 42vh;
+  max-height: 48vh;
   margin: 22px auto;
   border-radius: 18px;
-  object-fit: contain;
   background: rgba(0,0,0,.25);
   box-shadow: 0 8px 28px rgba(0,0,0,.25);
 }
@@ -294,6 +301,7 @@ h2 { font-size: clamp(34px, 8vw, 49px); }
   color: #684276;
   text-shadow: 0 0 18px rgba(255,255,255,.8);
 }
+
 #slide5 .eyebrow { color: #79568b; }
 #slide5 .subtitle { color: #684d75; }
 #slide5 .footer { color: #79568b; }
@@ -311,6 +319,18 @@ h2 { font-size: clamp(34px, 8vw, 49px); }
   color: #684276;
 }
 
+.fairy-video {
+  display: block;
+  width: 100%;
+  max-width: 440px;
+  max-height: 42vh;
+  margin: 18px auto;
+  border-radius: 20px;
+  object-fit: contain;
+  background: rgba(255,255,255,.35);
+  box-shadow: 0 8px 28px rgba(113,76,145,.2);
+}
+
 .fairy {
   position: absolute;
   z-index: 1;
@@ -326,7 +346,19 @@ h2 { font-size: clamp(34px, 8vw, 49px); }
   to { transform: translate(var(--drift),-45px) rotate(12deg); }
 }
 
-/* Slide 6: royal letter */
+.slide5-sparkle {
+  position: absolute;
+  pointer-events: none;
+  z-index: 5;
+  animation: slide5Sparkle 1.2s ease-out forwards;
+}
+
+@keyframes slide5Sparkle {
+  from { opacity: 1; transform: translate(0,0) scale(.5); }
+  to { opacity: 0; transform: translate(var(--dx),var(--dy)) scale(1.6); }
+}
+
+/* SLIDE 6: royal parchment letter */
 #slide6 {
   background:
     radial-gradient(ellipse at 50% 15%, #263d69 0%, transparent 55%),
@@ -343,7 +375,6 @@ h2 { font-size: clamp(34px, 8vw, 49px); }
   margin-bottom: 24px;
 }
 
-/* Scroll rollers */
 .scroll-roller, .scroll-bottom {
   position: relative;
   z-index: 3;
@@ -355,13 +386,10 @@ h2 { font-size: clamp(34px, 8vw, 49px); }
   box-shadow: 0 4px 10px #0008;
 }
 
-.scroll-roller { margin: 0 auto; }
-
 .scroll-bottom {
   background: linear-gradient(180deg, #936024, #f9df9e 35%, #c68d3d 70%, #fff0bd);
 }
 
-/* Paper rolls open downwards */
 .letter-window {
   max-height: 0;
   overflow: hidden;
@@ -375,11 +403,10 @@ h2 { font-size: clamp(34px, 8vw, 49px); }
 @keyframes unrollLetter {
   0% { max-height: 0; opacity: .5; }
   15% { opacity: 1; }
-  100% { max-height: 4000px; opacity: 1; }
+  100% { max-height: 5000px; opacity: 1; }
 }
 
 .royal-letter {
-  position: relative;
   padding: 30px 22px;
   color: #21182b;
   text-align: center;
@@ -439,9 +466,7 @@ h2 { font-size: clamp(34px, 8vw, 49px); }
   line-height: 1.25;
 }
 
-#slide6 .previous-button {
-  margin-top: 25px;
-}
+#slide6 .previous-button { margin-top: 25px; }
 
 @media (max-width: 380px) {
   .slide { padding: 26px 16px; }
@@ -666,6 +691,7 @@ h2 { font-size: clamp(34px, 8vw, 49px); }
     <button class="continue-button" type="button" onclick="showSlide(5)">
       ← Back to My Surprise
     </button>
+
     <p class="footer">MADE WITH LOVE, JUST FOR YOU ✦</p>
   </div>
 </section>
@@ -684,7 +710,7 @@ for (let i = 0; i < 65; i++) {
   stars.appendChild(star);
 }
 
-/* Blue butterflies */
+/* Flying blue butterflies */
 const butterflyArea = document.getElementById("butterflies");
 
 const butterflySVG = `
@@ -717,19 +743,4 @@ for (let i = 0; i < 10; i++) {
   butterfly.style.setProperty("--y1", (Math.random() * 120 - 60) + "px");
   butterfly.style.setProperty("--x2", (Math.random() * 160 - 80) + "px");
   butterfly.style.setProperty("--y2", (Math.random() * 160 - 80) + "px");
-  butterfly.style.setProperty("--x3", (Math.random() * 120 - 60) + "px");
-  butterfly.style.setProperty("--y3", (Math.random() * 180 - 90) + "px");
-  butterfly.style.setProperty("--x4", (Math.random() * 180 - 90) + "px");
-  butterfly.style.setProperty("--y4", (Math.random() * 140 - 70) + "px");
-
-  butterflyArea.appendChild(butterfly);
-}
-
-/* Slide 3 hearts */
-const slide3 = document.getElementById("slide3");
-
-for (let i = 0; i < 22; i++) {
-  const heart = document.createElement("span");
-  heart.className = "pink-heart";
-  heart.textContent = Math.random() > 0.5 ? "💗" : "♡";
-  heart.style.setPrope
+  butterfly.style.setProperty("--x3", (Math.random() * 120 - 60) + 
