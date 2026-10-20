@@ -742,5 +742,81 @@ for (let i = 0; i < 10; i++) {
   butterfly.style.setProperty("--x1", (Math.random() * 100 - 50) + "px");
   butterfly.style.setProperty("--y1", (Math.random() * 120 - 60) + "px");
   butterfly.style.setProperty("--x2", (Math.random() * 160 - 80) + "px");
-  butterfly.style.setProperty("--y2", (Math.random() * 160 - 80) + "px");
-  butterfly.style.setProperty("--x3", (Math.random() * 120 - 60) + 
+  butterfly.style.setProperty("--y2", (Math.random() * 160 - 80) + "px"); 
+  butterfly.style.setProperty("--x3", (Math.random() * 120 - 60) + "px");
+  butterfly.style.setProperty("--y3", (Math.random() * 120 - 60) + "px");
+  butterfly.style.setProperty("--x4", (Math.random() * 160 - 80) + "px");
+  butterfly.style.setProperty("--y4", (Math.random() * 160 - 80) + "px");
+
+  butterflyArea.appendChild(butterfly);
+}
+
+/* Slide navigation */
+function showSlide(number) {
+  const target = document.getElementById("slide" + number);
+  if (!target) return;
+
+  document.querySelectorAll(".slide").forEach(function(slide) {
+    slide.classList.remove("active");
+  });
+
+  target.classList.add("active");
+  window.scrollTo(0, 0);
+
+  const video4 = document.getElementById("video4");
+  const video5 = document.getElementById("video5");
+
+  if (video4 && number !== 4) video4.pause();
+  if (video5 && number !== 5) video5.pause();
+}
+
+/* Birthday gift button */
+function openBirthdayGift() {
+  const openButton = document.getElementById("openGiftButton");
+  const watchButton = document.getElementById("watchVideoButton");
+
+  if (openButton) openButton.hidden = true;
+  if (watchButton) watchButton.hidden = false;
+
+  createPinkHearts();
+}
+
+/* Floating hearts on the gift slide */
+function createPinkHearts() {
+  const slide = document.getElementById("slide3");
+
+  for (let i = 0; i < 18; i++) {
+    const heart = document.createElement("span");
+    heart.className = "pink-heart";
+    heart.textContent = "♡";
+    heart.style.setProperty("--left", Math.random() * 95 + "%");
+    heart.style.setProperty("--size", (15 + Math.random() * 24) + "px");
+    heart.style.setProperty("--duration", (5 + Math.random() * 5) + "s");
+    heart.style.setProperty("--delay", (Math.random() * 3) + "s");
+    slide.appendChild(heart);
+    setTimeout(() => heart.remove(), 11000);
+  }
+}
+
+/* Sparkles on Slide 5 */
+function createSlide5Sparkles() {
+  const slide = document.getElementById("slide5");
+
+  for (let i = 0; i < 28; i++) {
+    const sparkle = document.createElement("span");
+    sparkle.className = "slide5-sparkle";
+    sparkle.textContent = ["✦", "✨", "♡", "✧"][i % 4];
+    sparkle.style.left = (10 + Math.random() * 80) + "%";
+    sparkle.style.top = (15 + Math.random() * 70) + "%";
+    sparkle.style.color = ["#fff", "#e7a9ff", "#ffb9dd", "#c6b5ff"][i % 4];
+    sparkle.style.fontSize = (12 + Math.random() * 20) + "px";
+    sparkle.style.setProperty("--dx", (Math.random() * 120 - 60) + "px");
+    sparkle.style.setProperty("--dy", (Math.random() * 120 - 60) + "px");
+    slide.appendChild(sparkle);
+    setTimeout(() => sparkle.remove(), 1300);
+  }
+    }
+  
+  </script>
+</body>
+</html>
