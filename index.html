@@ -8,9 +8,7 @@
 <title>A Little World Made for You 💙</title>
 
 <style>
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 html, body {
   margin: 0;
@@ -88,7 +86,6 @@ body {
 .eyebrow {
   margin: 0 0 22px;
   color: #b8ddff;
-  font-family: Georgia, "Times New Roman", serif;
   font-size: 11px;
   line-height: 1.8;
   letter-spacing: 4px;
@@ -104,9 +101,7 @@ h1, h2 {
   text-shadow: 0 0 25px rgba(112,184,255,.4);
 }
 
-h2 {
-  font-size: clamp(34px, 8vw, 49px);
-}
+h2 { font-size: clamp(34px, 8vw, 49px); }
 
 .subtitle {
   max-width: 440px;
@@ -132,7 +127,7 @@ h2 {
   45% { transform: scale(1.06); }
 }
 
-/* Blue butterflies */
+/* Flying blue butterflies */
 .butterfly {
   position: absolute;
   left: var(--left);
@@ -152,10 +147,7 @@ h2 {
 }
 
 @keyframes butterflyFly {
-  0% {
-    opacity: 0;
-    transform: translate(0,0) rotate(-15deg);
-  }
+  0% { opacity: 0; transform: translate(0,0) rotate(-15deg); }
   10% { opacity: .9; }
   25% { transform: translate(var(--x1),var(--y1)) rotate(18deg); }
   50% { transform: translate(var(--x2),var(--y2)) rotate(-12deg); }
@@ -172,7 +164,7 @@ h2 {
   to { scale: 1 1.08; }
 }
 
-/* Buttons */
+/* Shared buttons */
 .continue-button {
   display: block;
   width: min(510px, 88%);
@@ -181,33 +173,20 @@ h2 {
   padding: 16px 22px;
   border: 2px solid #dceaff;
   border-radius: 50px;
-  background: linear-gradient(
-    110deg,
-    #2867d9 0%,
-    #6578f5 55%,
-    #b36cf2 100%
-  );
+  background: linear-gradient(110deg, #2867d9, #6578f5 55%, #b36cf2);
   color: #fff;
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(17px, 4.5vw, 24px);
   line-height: 1.35;
   text-align: center;
-  box-shadow:
-    0 0 18px rgba(106,147,255,.28),
-    0 8px 24px rgba(144,101,255,.18);
+  box-shadow: 0 0 18px rgba(106,147,255,.28),
+              0 8px 24px rgba(144,101,255,.18);
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   transition: transform .2s ease, box-shadow .2s ease;
 }
 
-.continue-button:active {
-  transform: scale(.97);
-}
-
-.continue-button:disabled {
-  opacity: 1;
-  cursor: default;
-}
+.continue-button:active { transform: scale(.97); }
 
 .previous-button {
   display: block;
@@ -237,14 +216,11 @@ h2 {
   letter-spacing: 2px;
 }
 
-/* Slide 3 and 4: matching purple backgrounds */
-#slide3,
-#slide4 {
-  background:
-    radial-gradient(ellipse at center, #63265f 0%, #35132f 65%, #180b20 100%);
+/* Slides 3 and 4: matching purple backgrounds */
+#slide3, #slide4 {
+  background: radial-gradient(ellipse at center, #63265f 0%, #35132f 65%, #180b20 100%);
 }
 
-/* Slide 3 gift photo */
 .gift-photo {
   display: block;
   width: min(100%, 390px);
@@ -274,19 +250,12 @@ h2 {
 }
 
 @keyframes heartFloat {
-  0% {
-    transform: translateY(0) rotate(0);
-    opacity: 0;
-  }
-  15% { opacity: .7; }
-  85% { opacity: .7; }
-  100% {
-    transform: translateY(-110vh) rotate(35deg);
-    opacity: 0;
-  }
+  0% { transform: translateY(0) rotate(0); opacity: 0; }
+  15%,85% { opacity: .7; }
+  100% { transform: translateY(-110vh) rotate(35deg); opacity: 0; }
 }
 
-.sparkle {
+.sparkle, .slide5-sparkle {
   position: absolute;
   z-index: 5;
   pointer-events: none;
@@ -294,24 +263,18 @@ h2 {
 }
 
 @keyframes sparkleBurst {
-  from {
-    opacity: 1;
-    transform: translate(0,0) scale(.5);
-  }
-  to {
-    opacity: 0;
-    transform: translate(var(--dx),var(--dy)) scale(1.6);
-  }
+  from { opacity: 1; transform: translate(0,0) scale(.5); }
+  to { opacity: 0; transform: translate(var(--dx),var(--dy)) scale(1.6); }
 }
 
-/* Slide 4 video */
-.birthday-video {
+.birthday-video, .fairy-video {
   display: block;
   width: 100%;
   max-width: 440px;
-  max-height: 48vh;
+  max-height: 42vh;
   margin: 22px auto;
   border-radius: 18px;
+  object-fit: contain;
   background: rgba(0,0,0,.25);
   box-shadow: 0 8px 28px rgba(0,0,0,.25);
 }
@@ -331,18 +294,9 @@ h2 {
   color: #684276;
   text-shadow: 0 0 18px rgba(255,255,255,.8);
 }
-
-#slide5 .eyebrow {
-  color: #79568b;
-}
-
-#slide5 .subtitle {
-  color: #684d75;
-}
-
-#slide5 .footer {
-  color: #79568b;
-}
+#slide5 .eyebrow { color: #79568b; }
+#slide5 .subtitle { color: #684d75; }
+#slide5 .footer { color: #79568b; }
 
 #slide5 .continue-button {
   border-color: white;
@@ -357,18 +311,6 @@ h2 {
   color: #684276;
 }
 
-.fairy-video {
-  display: block;
-  width: 100%;
-  max-width: 440px;
-  max-height: 42vh;
-  margin: 18px auto;
-  border-radius: 20px;
-  object-fit: contain;
-  background: rgba(255,255,255,.35);
-  box-shadow: 0 8px 28px rgba(113,76,145,.2);
-}
-
 .fairy {
   position: absolute;
   z-index: 1;
@@ -380,30 +322,125 @@ h2 {
 }
 
 @keyframes fairyFloat {
-  from {
-    transform: translate(0,12px) rotate(-12deg);
-  }
-  to {
-    transform: translate(var(--drift),-45px) rotate(12deg);
-  }
+  from { transform: translate(0,12px) rotate(-12deg); }
+  to { transform: translate(var(--drift),-45px) rotate(12deg); }
 }
 
-.slide5-sparkle {
-  position: absolute;
-  pointer-events: none;
-  z-index: 5;
-  animation: slide5Sparkle 1.2s ease-out forwards;
+/* Slide 6: royal letter */
+#slide6 {
+  background:
+    radial-gradient(ellipse at 50% 15%, #263d69 0%, transparent 55%),
+    linear-gradient(145deg, #030918, #102344 60%, #07152f);
+  overflow: hidden;
 }
 
-@keyframes slide5Sparkle {
-  from {
-    opacity: 1;
-    transform: translate(0,0) scale(.5);
-  }
-  to {
-    opacity: 0;
-    transform: translate(var(--dx),var(--dy)) scale(1.6);
-  }
+#slide6 .slide-content { max-width: 620px; }
+#slide6 .eyebrow { color: #f1d39a; }
+
+#slide6 h2 {
+  color: #fff0cf;
+  font-size: clamp(30px, 7vw, 44px);
+  margin-bottom: 24px;
+}
+
+/* Scroll rollers */
+.scroll-roller, .scroll-bottom {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  height: 25px;
+  border: 2px solid #b78336;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #fff0bd, #c68d3d 40%, #f9df9e 70%, #936024);
+  box-shadow: 0 4px 10px #0008;
+}
+
+.scroll-roller { margin: 0 auto; }
+
+.scroll-bottom {
+  background: linear-gradient(180deg, #936024, #f9df9e 35%, #c68d3d 70%, #fff0bd);
+}
+
+/* Paper rolls open downwards */
+.letter-window {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+}
+
+#slide6.active .letter-window {
+  animation: unrollLetter 3.5s ease-out forwards;
+}
+
+@keyframes unrollLetter {
+  0% { max-height: 0; opacity: .5; }
+  15% { opacity: 1; }
+  100% { max-height: 4000px; opacity: 1; }
+}
+
+.royal-letter {
+  position: relative;
+  padding: 30px 22px;
+  color: #21182b;
+  text-align: center;
+  border: 5px double #b58a45;
+  background:
+    radial-gradient(ellipse at 15% 10%, #fff4d9, transparent 45%),
+    radial-gradient(ellipse at 85% 90%, #e8c99a, transparent 45%),
+    linear-gradient(135deg, #fff0d2, #f2d8ae 50%, #fff0d5);
+  box-shadow: inset 0 0 28px rgba(120,74,25,.22),
+              0 12px 30px rgba(0,0,0,.35);
+}
+
+.royal-letter::before {
+  content: "✦  ♡  ✦  ♡  ✦";
+  display: block;
+  margin-bottom: 22px;
+  color: #a9792f;
+  font-size: 22px;
+  letter-spacing: 6px;
+}
+
+.letter-heading {
+  margin-bottom: 22px;
+  color: #17203c;
+  font-size: 12px;
+  letter-spacing: 4px;
+}
+
+.royal-letter .letter-title {
+  margin: 0 0 24px;
+  color: #17203c;
+  font-family: "Brush Script MT", cursive;
+  font-size: clamp(38px, 9vw, 62px);
+  line-height: 1.2;
+  font-weight: normal;
+}
+
+.royal-letter p {
+  margin: 0 0 19px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(16px, 4.2vw, 21px);
+  line-height: 1.65;
+}
+
+.royal-letter .letter-divider {
+  margin: 14px 0;
+  color: #a9792f;
+  font-size: 21px;
+}
+
+.royal-letter .letter-signature {
+  margin-top: 28px;
+  color: #17203c;
+  font-family: "Brush Script MT", cursive;
+  font-size: clamp(30px, 7vw, 44px);
+  font-style: italic;
+  line-height: 1.25;
+}
+
+#slide6 .previous-button {
+  margin-top: 25px;
 }
 
 @media (max-width: 380px) {
@@ -416,6 +453,8 @@ h2 {
     padding: 14px 12px;
     font-size: 17px;
   }
+  .royal-letter { padding: 24px 15px; }
+  .royal-letter p { line-height: 1.55; }
 }
 
 @media (max-height: 720px) {
@@ -428,10 +467,7 @@ h2 {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-  }
+  *, *::before, *::after { animation-duration: .01ms !important; }
 }
 </style>
 </head>
@@ -444,22 +480,16 @@ h2 {
 <section class="slide active" id="slide1">
   <div class="slide-content">
     <p class="eyebrow">A little surprise for you</p>
-
     <h1>Happy Birthday<br>My Prince 💙</h1>
-
     <p class="subtitle">
       To my favourite person in this whole universe,
       you make my world a little more magical every day.
       This little surprise is made with all my love.
     </p>
-
     <div class="heart" aria-hidden="true">♡</div>
-
-    <button class="continue-button" type="button"
-      onclick="showSlide(2)">
+    <button class="continue-button" type="button" onclick="showSlide(2)">
       Begin with more surprises →
     </button>
-
     <p class="footer">MADE WITH LOVE, JUST FOR YOU ✦</p>
   </div>
 </section>
@@ -468,36 +498,26 @@ h2 {
 <section class="slide" id="slide2">
   <div class="slide-content">
     <p class="eyebrow">✦ A little world made for you ✦</p>
-
     <div class="heart" aria-hidden="true">♡</div>
-
     <h2>Happy Birthday,<br>My Love 💙</h2>
-
     <p class="subtitle">
       If I could give you one thing in this world,
       it would be the chance to see yourself through my eyes.
     </p>
-
     <p class="subtitle">
       Maybe then you'd understand just how special
       you are to me. 🦋
     </p>
-
     <p class="subtitle">
       And this little universe? It's just the beginning
       of everything I want to show you. ♡
     </p>
-
-    <button class="continue-button" type="button"
-      onclick="showSlide(3)">
+    <button class="continue-button" type="button" onclick="showSlide(3)">
       There's More for You 💌
     </button>
-
-    <button class="previous-button" type="button"
-      onclick="showSlide(1)">
+    <button class="previous-button" type="button" onclick="showSlide(1)">
       ← Previous
     </button>
-
     <p class="footer">MADE WITH LOVE, JUST FOR YOU ✦</p>
   </div>
 </section>
@@ -506,33 +526,18 @@ h2 {
 <section class="slide" id="slide3">
   <div class="slide-content">
     <p class="eyebrow">✦ A little gift for you ✦</p>
-
     <h2>Something Special<br>Is Waiting 🎁</h2>
-
-    <img
-      class="gift-photo"
-      src="gift-box.jpg..jpg"
-      alt="A special birthday gift"
-    >
-
-    <p class="subtitle">
-      Ready to open your surprise? 💗
-    </p>
-
-    <button class="continue-button gift-button"
-      id="openGiftButton" type="button"
-      onclick="openBirthdayGift()">
+    <img class="gift-photo" src="gift-box.jpg..jpg" alt="A special birthday gift">
+    <p class="subtitle">Ready to open your surprise? 💗</p>
+    <button class="continue-button gift-button" id="openGiftButton"
+      type="button" onclick="openBirthdayGift()">
       TAP TO OPEN THE BOX 🎁
     </button>
-
-    <button class="continue-button gift-button"
-      id="watchVideoButton" type="button"
-      onclick="showSlide(4)" hidden>
+    <button class="continue-button gift-button" id="watchVideoButton"
+      type="button" onclick="showSlide(4)" hidden>
       Watch Your Birthday Surprise 🎬 →
     </button>
-
-    <button class="previous-button" type="button"
-      onclick="showSlide(2)">
+    <button class="previous-button" type="button" onclick="showSlide(2)">
       ← Previous
     </button>
   </div>
@@ -542,35 +547,21 @@ h2 {
 <section class="slide" id="slide4">
   <div class="slide-content">
     <p class="eyebrow">✦ Made with all my love ✦</p>
-
     <h2>Just for You,<br>My Prince 💙</h2>
-
-    <p class="subtitle">
-      Press play and enjoy your little surprise. ♡
-    </p>
-
-    <video class="birthday-video" id="video4"
-      controls playsinline preload="metadata">
-      <source src="gemini_generated_video_e7915351.mp4"
-        type="video/mp4">
+    <p class="subtitle">Press play and enjoy your little surprise. ♡</p>
+    <video class="birthday-video" id="video4" controls playsinline preload="metadata">
+      <source src="gemini_generated_video_e7915351.mp4" type="video/mp4">
       Your browser cannot play this video.
     </video>
-
-    <button class="continue-button gift-button"
-      type="button" onclick="showSlide(3)">
+    <button class="continue-button gift-button" type="button" onclick="showSlide(3)">
       ← Back to the Gift
     </button>
-
-    <button class="continue-button gift-button"
-      type="button" onclick="showSlide(5)">
+    <button class="continue-button gift-button" type="button" onclick="showSlide(5)">
       Your Final Surprise 🧚 →
     </button>
-
-    <button class="previous-button" type="button"
-      onclick="showSlide(2)">
+    <button class="previous-button" type="button" onclick="showSlide(2)">
       ← Previous
     </button>
-
     <p class="footer">MADE WITH LOVE, JUST FOR YOU ✦</p>
   </div>
 </section>
@@ -579,42 +570,102 @@ h2 {
 <section class="slide" id="slide5">
   <div class="slide-content">
     <p class="eyebrow">✦ A little magic for you ✦</p>
-
     <h2>Your Birthday<br>Fairy Surprise 🧚</h2>
-
     <p class="subtitle">
       A little bit of magic, a little bit of love,
       and one more surprise made just for you. 🌙
     </p>
-
-    <video
-      class="fairy-video"
-      id="video5"
-      controls
-      playsinline
-      preload="metadata">
-      <source
-        src="gemini_generated_video_c2f2162b.mp4"
-        type="video/mp4">
+    <video class="fairy-video" id="video5" controls playsinline preload="metadata">
+      <source src="gemini_generated_video_c2f2162b.mp4" type="video/mp4">
       Your browser cannot play this video.
     </video>
-
-    <p class="subtitle">
-      You make my world more magical. 💗
-    </p>
-
-    <button class="continue-button"
-      type="button"
-      onclick="createSlide5Sparkles()">
+    <p class="subtitle">You make my world more magical. 💗</p>
+    <button class="continue-button" type="button" onclick="createSlide5Sparkles()">
       One More Little Magic ✨
     </button>
-
-    <button class="previous-button"
-      type="button"
-      onclick="showSlide(4)">
+    <button class="continue-button" type="button" onclick="showSlide(6)">
+      Open Your Secret Letter 💌 →
+    </button>
+    <button class="previous-button" type="button" onclick="showSlide(4)">
       ← Previous
     </button>
+    <p class="footer">MADE WITH LOVE, JUST FOR YOU ✦</p>
+  </div>
+</section>
 
+<!-- SLIDE 6: ROYAL LETTER -->
+<section class="slide" id="slide6">
+  <div class="slide-content">
+    <p class="eyebrow">✦ A letter from your girl ✦</p>
+    <h2>A Little Letter for My Prince 👑</h2>
+
+    <div class="scroll-roller"></div>
+
+    <div class="letter-window">
+      <article class="royal-letter">
+        <div class="letter-heading">A LITTLE NOTE FOR</div>
+        <h3 class="letter-title">My Little Prince 💙</h3>
+
+        <p>
+          Happiest birthday to my favourite headache
+          and my forever favourite person. 🥹💙
+        </p>
+
+        <div class="letter-divider">— ✦ —</div>
+
+        <p>
+          I know we fight, we get stubborn, and sometimes
+          we drive each other crazy. 😂 But what matters most
+          is that we solve our problems and keep choosing each other.
+          Thank you for never letting go of my hand. 🥹🤍
+        </p>
+
+        <div class="letter-divider">— ✦ —</div>
+
+        <p>
+          I don’t want you to change who you are, my love,
+          but I do want you to keep trying, growing, and understanding
+          me — just as I’ll keep trying for you. 🤝💙
+          We don’t need to be perfect, we just need to keep choosing us. ✨
+        </p>
+
+        <div class="letter-divider">— ✦ —</div>
+
+        <p>
+          I want us to achieve great things together,
+          celebrate each other’s success, and stay hand in hand
+          until we’re old and grey. 🤍🌙
+        </p>
+
+        <div class="letter-divider">— ✦ —</div>
+
+        <p>
+          I hope you loved my little surprise, because
+          I’m planning to annoy you with love and surprises
+          for the next 100 years, if possible. 😜😂🎂
+        </p>
+
+        <div class="letter-divider">— ✦ —</div>
+
+        <p>
+          I love you more than I can explain, Your Highness.
+          Now don’t let this note make your ego bigger! 😚💋
+        </p>
+
+        <p class="letter-signature">
+          Always yours,<br>
+          your girl ♡
+        </p>
+
+        <div class="letter-divider">✦ ♡ ✦</div>
+      </article>
+    </div>
+
+    <div class="scroll-bottom"></div>
+
+    <button class="continue-button" type="button" onclick="showSlide(5)">
+      ← Back to My Surprise
+    </button>
     <p class="footer">MADE WITH LOVE, JUST FOR YOU ✦</p>
   </div>
 </section>
@@ -633,7 +684,7 @@ for (let i = 0; i < 65; i++) {
   stars.appendChild(star);
 }
 
-/* Flying blue butterflies */
+/* Blue butterflies */
 const butterflyArea = document.getElementById("butterflies");
 
 const butterflySVG = `
@@ -646,11 +697,9 @@ const butterflySVG = `
     fill="#3c91eb" stroke="#a8d7ff" stroke-width="2"/>
   <path d="M51 53 C77 44 82 70 65 77 C55 80 51 65 51 53"
     fill="#3c91eb" stroke="#a8d7ff" stroke-width="2"/>
-  <path d="M50 43 L50 66" stroke="#e8f6ff"
-    stroke-width="4" stroke-linecap="round"/>
+  <path d="M50 43 L50 66" stroke="#e8f6ff" stroke-width="4" stroke-linecap="round"/>
   <path d="M49 43 Q39 24 33 29 M51 43 Q61 24 67 29"
-    fill="none" stroke="#e8f6ff" stroke-width="2"
-    stroke-linecap="round"/>
+    fill="none" stroke="#e8f6ff" stroke-width="2" stroke-linecap="round"/>
 </svg>`;
 
 for (let i = 0; i < 10; i++) {
@@ -676,128 +725,11 @@ for (let i = 0; i < 10; i++) {
   butterflyArea.appendChild(butterfly);
 }
 
-/* Slide 3 floating pink hearts */
+/* Slide 3 hearts */
 const slide3 = document.getElementById("slide3");
 
 for (let i = 0; i < 22; i++) {
   const heart = document.createElement("span");
   heart.className = "pink-heart";
   heart.textContent = Math.random() > 0.5 ? "💗" : "♡";
-
-  heart.style.setProperty("--left", Math.random() * 96 + "%");
-  heart.style.setProperty("--size", (14 + Math.random() * 18) + "px");
-  heart.style.setProperty("--duration", (8 + Math.random() * 10) + "s");
-  heart.style.setProperty("--delay", (-Math.random() * 15) + "s");
-
-  slide3.appendChild(heart);
-}
-
-/* Open the gift */
-function openBirthdayGift() {
-  const slide = document.getElementById("slide3");
-  const button = document.getElementById("openGiftButton");
-  const nextButton = document.getElementById("watchVideoButton");
-
-  if (!slide || !button || !nextButton || button.disabled) return;
-
-  button.disabled = true;
-  button.textContent = "SURPRISE! ✨💗";
-
-  const symbols = ["✨", "💖", "⭐", "💕", "✦"];
-
-  for (let i = 0; i < 35; i++) {
-    const sparkle = document.createElement("span");
-    sparkle.className = "sparkle";
-    sparkle.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-
-    sparkle.style.left = (10 + Math.random() * 80) + "%";
-    sparkle.style.top = (20 + Math.random() * 55) + "%";
-    sparkle.style.setProperty("--dx", (Math.random() * 160 - 80) + "px");
-    sparkle.style.setProperty("--dy", (Math.random() * 160 - 80) + "px");
-
-    slide.appendChild(sparkle);
-
-    sparkle.addEventListener("animationend", function() {
-      sparkle.remove();
-    });
-  }
-
-  nextButton.hidden = false;
-  nextButton.scrollIntoView({ behavior: "smooth", block: "nearest" });
-}
-
-/* Slide 5 floating fairies */
-const slide5 = document.getElementById("slide5");
-
-if (slide5) {
-  const fairySymbols = ["🧚", "✨", "🌙", "⭐", "🦋"];
-
-  for (let i = 0; i < 16; i++) {
-    const fairy = document.createElement("span");
-    fairy.className = "fairy";
-    fairy.textContent =
-      fairySymbols[Math.floor(Math.random() * fairySymbols.length)];
-
-    fairy.style.left = Math.random() * 95 + "%";
-    fairy.style.top = Math.random() * 85 + "%";
-    fairy.style.setProperty("--size", (12 + Math.random() * 17) + "px");
-    fairy.style.setProperty("--duration", (3 + Math.random() * 5) + "s");
-    fairy.style.setProperty("--delay", (-Math.random() * 6) + "s");
-    fairy.style.setProperty("--drift", (Math.random() * 70 - 35) + "px");
-
-    slide5.appendChild(fairy);
-  }
-}
-
-/* Slide 5 sparkle button */
-function createSlide5Sparkles() {
-  const slide = document.getElementById("slide5");
-  if (!slide) return;
-
-  const symbols = ["✨", "💖", "⭐", "🌸", "🦋"];
-
-  for (let i = 0; i < 28; i++) {
-    const sparkle = document.createElement("span");
-    sparkle.className = "slide5-sparkle";
-    sparkle.textContent =
-      symbols[Math.floor(Math.random() * symbols.length)];
-
-    sparkle.style.left = (10 + Math.random() * 80) + "%";
-    sparkle.style.top = (20 + Math.random() * 60) + "%";
-    sparkle.style.setProperty("--dx", (Math.random() * 180 - 90) + "px");
-    sparkle.style.setProperty("--dy", (Math.random() * 180 - 90) + "px");
-
-    slide.appendChild(sparkle);
-
-    sparkle.addEventListener("animationend", function() {
-      sparkle.remove();
-    });
-  }
-}
-
-/* Navigation between all five slides */
-function showSlide(number) {
-  const target = document.getElementById("slide" + number);
-  if (!target) return;
-
-  document.querySelectorAll(".slide").forEach(function(slide) {
-    slide.classList.remove("active");
-  });
-
-  target.classList.add("active");
-  window.scrollTo(0, 0);
-
-  const video4 = document.getElementById("video4");
-  const video5 = document.getElementById("video5");
-
-  if (video4 && number !== 4) {
-    video4.pause();
-  }
-
-  if (video5 && number !== 5) {
-    video5.pause();
-  }
-}
-</script>
-</body>
-</html>
+  heart.style.setPrope
