@@ -494,6 +494,92 @@ h2 { font-size: clamp(34px, 8vw, 49px); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; }
 }
+
+
+/* SLIDE 7 - ONE PIECE TREASURE */
+#slide7 {
+  background: radial-gradient(circle at top, #174b78, #07172f 75%);
+  color: #fff4cf;
+  text-align: center;
+}
+
+#slide7 .slide-content { width: min(92%, 700px); margin: auto; }
+#slide7 .eyebrow { color: #b9e2ff; }
+#slide7 h2 {
+  color: #ffd76a;
+  text-shadow: 0 0 18px #ffb52e;
+  font-size: clamp(30px, 7vw, 46px);
+  margin-bottom: 18px;
+}
+#slide7 .treasure-intro {
+  max-width: 540px;
+  margin: 15px auto;
+  color: #e2edff;
+  font-size: clamp(16px, 4.2vw, 20px);
+  line-height: 1.7;
+}
+#slide7 .treasure-chest {
+  position: relative;
+  display: block;
+  width: 210px;
+  height: 155px;
+  margin: 42px auto 24px;
+  border: 5px solid #f5bd43;
+  border-radius: 16px 16px 10px 10px;
+  background: linear-gradient(135deg, #b66a25, #633016);
+  box-shadow: 0 12px 35px #0008, inset 0 0 0 5px #713a18;
+  cursor: pointer;
+  perspective: 500px;
+  -webkit-tap-highlight-color: transparent;
+}
+#slide7 .treasure-lid {
+  position: absolute;
+  z-index: 2;
+  top: -28px;
+  left: -5px;
+  width: 100%;
+  height: 65px;
+  border: 5px solid #ffd76a;
+  border-radius: 18px 18px 5px 5px;
+  background: linear-gradient(#d9953b, #8d481e);
+  transform-origin: bottom;
+  transition: transform 1s ease;
+}
+#slide7 .treasure-chest.opened .treasure-lid { transform: rotateX(115deg); }
+#slide7 .treasure-lock {
+  position: absolute;
+  z-index: 3;
+  top: 42px;
+  left: calc(50% - 17px);
+  font-size: 35px;
+}
+#slide7 .treasure-emblem { font-size: 43px; line-height: 1; }
+#slide7 .treasure-button, #slide7 .replay-button {
+  display: inline-block;
+  margin: 12px 5px;
+  padding: 13px 20px;
+  border: 2px solid #ffd76a;
+  border-radius: 28px;
+  background: linear-gradient(135deg, #ffdc78, #e89a28);
+  color: #38200b;
+  font-weight: bold;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1rem;
+  cursor: pointer;
+}
+#slide7 .treasure-video {
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  max-height: 65vh;
+  margin: 22px auto;
+  border: 3px solid #ffd76a;
+  border-radius: 16px;
+  background: #000;
+  box-shadow: 0 0 25px #f5bd4366;
+}
+#slide7 .treasure-video-area[hidden] { display: none; }
+
 </style>
 </head>
 
@@ -689,134 +775,11 @@ h2 { font-size: clamp(34px, 8vw, 49px); }
     <div class="scroll-bottom"></div>
 
     <button class="continue-button" type="button" onclick="showSlide(5)">
-      ← Back to My Surprise
-    </button>
+  ← Back to My Surprise
+</button>
 
-    <p class="footer">MADE WITH LOVE, JUST FOR YOU ✦</p>
-  </div>
-</section>
+<button class="continue-button" type="button" onclick="showSlide(7)">
+  Find Your Final Treasure 🎁 →
+</button>
 
-<script>
-/* Twinkling stars */
-const stars = document.getElementById("stars");
-
-for (let i = 0; i < 65; i++) {
-  const star = document.createElement("span");
-  star.className = "star";
-  star.style.left = Math.random() * 100 + "%";
-  star.style.top = Math.random() * 100 + "%";
-  star.style.animationDelay = Math.random() * 3 + "s";
-  star.style.animationDuration = (1.5 + Math.random() * 3) + "s";
-  stars.appendChild(star);
-}
-
-/* Flying blue butterflies */
-const butterflyArea = document.getElementById("butterflies");
-
-const butterflySVG = `
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <path d="M49 47 C29 7 4 14 13 39 C18 54 35 56 49 51"
-    fill="#79bfff" stroke="#c5e6ff" stroke-width="2"/>
-  <path d="M51 47 C71 7 96 14 87 39 C82 54 65 56 51 51"
-    fill="#a6d7ff" stroke="#e0f3ff" stroke-width="2"/>
-  <path d="M49 53 C23 44 18 70 35 77 C45 80 49 65 49 53"
-    fill="#3c91eb" stroke="#a8d7ff" stroke-width="2"/>
-  <path d="M51 53 C77 44 82 70 65 77 C55 80 51 65 51 53"
-    fill="#3c91eb" stroke="#a8d7ff" stroke-width="2"/>
-  <path d="M50 43 L50 66" stroke="#e8f6ff" stroke-width="4" stroke-linecap="round"/>
-  <path d="M49 43 Q39 24 33 29 M51 43 Q61 24 67 29"
-    fill="none" stroke="#e8f6ff" stroke-width="2" stroke-linecap="round"/>
-</svg>`;
-
-for (let i = 0; i < 10; i++) {
-  const butterfly = document.createElement("div");
-  butterfly.className = "butterfly";
-  butterfly.innerHTML = butterflySVG;
-
-  butterfly.style.setProperty("--size", (20 + Math.random() * 22) + "px");
-  butterfly.style.setProperty("--left", Math.random() * 95 + "%");
-  butterfly.style.setProperty("--top", Math.random() * 90 + "%");
-  butterfly.style.setProperty("--duration", (10 + Math.random() * 12) + "s");
-  butterfly.style.setProperty("--delay", (-Math.random() * 18) + "s");
-
-  butterfly.style.setProperty("--x1", (Math.random() * 100 - 50) + "px");
-  butterfly.style.setProperty("--y1", (Math.random() * 120 - 60) + "px");
-  butterfly.style.setProperty("--x2", (Math.random() * 160 - 80) + "px");
-  butterfly.style.setProperty("--y2", (Math.random() * 160 - 80) + "px"); 
-  butterfly.style.setProperty("--x3", (Math.random() * 120 - 60) + "px");
-  butterfly.style.setProperty("--y3", (Math.random() * 120 - 60) + "px");
-  butterfly.style.setProperty("--x4", (Math.random() * 160 - 80) + "px");
-  butterfly.style.setProperty("--y4", (Math.random() * 160 - 80) + "px");
-
-  butterflyArea.appendChild(butterfly);
-}
-
-/* Slide navigation */
-function showSlide(number) {
-  const target = document.getElementById("slide" + number);
-  if (!target) return;
-
-  document.querySelectorAll(".slide").forEach(function(slide) {
-    slide.classList.remove("active");
-  });
-
-  target.classList.add("active");
-  window.scrollTo(0, 0);
-
-  const video4 = document.getElementById("video4");
-  const video5 = document.getElementById("video5");
-
-  if (video4 && number !== 4) video4.pause();
-  if (video5 && number !== 5) video5.pause();
-}
-
-/* Birthday gift button */
-function openBirthdayGift() {
-  const openButton = document.getElementById("openGiftButton");
-  const watchButton = document.getElementById("watchVideoButton");
-
-  if (openButton) openButton.hidden = true;
-  if (watchButton) watchButton.hidden = false;
-
-  createPinkHearts();
-}
-
-/* Floating hearts on the gift slide */
-function createPinkHearts() {
-  const slide = document.getElementById("slide3");
-
-  for (let i = 0; i < 18; i++) {
-    const heart = document.createElement("span");
-    heart.className = "pink-heart";
-    heart.textContent = "♡";
-    heart.style.setProperty("--left", Math.random() * 95 + "%");
-    heart.style.setProperty("--size", (15 + Math.random() * 24) + "px");
-    heart.style.setProperty("--duration", (5 + Math.random() * 5) + "s");
-    heart.style.setProperty("--delay", (Math.random() * 3) + "s");
-    slide.appendChild(heart);
-    setTimeout(() => heart.remove(), 11000);
-  }
-}
-
-/* Sparkles on Slide 5 */
-function createSlide5Sparkles() {
-  const slide = document.getElementById("slide5");
-
-  for (let i = 0; i < 28; i++) {
-    const sparkle = document.createElement("span");
-    sparkle.className = "slide5-sparkle";
-    sparkle.textContent = ["✦", "✨", "♡", "✧"][i % 4];
-    sparkle.style.left = (10 + Math.random() * 80) + "%";
-    sparkle.style.top = (15 + Math.random() * 70) + "%";
-    sparkle.style.color = ["#fff", "#e7a9ff", "#ffb9dd", "#c6b5ff"][i % 4];
-    sparkle.style.fontSize = (12 + Math.random() * 20) + "px";
-    sparkle.style.setProperty("--dx", (Math.random() * 120 - 60) + "px");
-    sparkle.style.setProperty("--dy", (Math.random() * 120 - 60) + "px");
-    slide.appendChild(sparkle);
-    setTimeout(() => sparkle.remove(), 1300);
-  }
-    }
-  
-  </script>
-</body>
-</html>
+<p class="footer">MADE WITH LOVE, JUST FOR YOU ✦</p>
