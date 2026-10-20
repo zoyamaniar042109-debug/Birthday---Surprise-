@@ -775,127 +775,234 @@ h2 { font-size: clamp(34px, 8vw, 49px); }
     <div class="scroll-bottom"></div>
 
     <button class="continue-button" type="button" onclick="showSlide(5)">
-  ← Back to My Surprise
+      ← Back to My Surprise
+    </button>
+    <button class="continue-button" type="button" onclick="showSlide(7)">
+      Find Your Final Treasure 🎁 →
 </button>
 
-<button class="continue-button" type="button" onclick="showSlide(7)">
-  Find Your Final Treasure 🎁 →
-</button>
-
-<p class="footer">MADE WITH LOVE, JUST FOR YOU ✦</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
+    <p class="footer">MADE WITH LOVE, JUST FOR YOU ✦</p>
+  </div>
+</section>
+
+
+<!-- SLIDE 7: ONE PIECE TREASURE REVEAL -->
+<section class="slide" id="slide7">
+  <div class="slide-content">
+    <p class="eyebrow">🏴‍☠️ YOUR FINAL TREASURE 🏴‍☠️</p>
+    <h2>A Treasure for My Prince! 👑</h2>
+    <p class="treasure-intro">
+      Every pirate dreams of finding treasure...
+      but my favourite treasure will always be you. 💙
+      Tap the chest to discover your birthday surprise!
+    </p>
+
+    <button
+      type="button"
+      class="treasure-chest"
+      id="onePieceChest"
+      onclick="openOnePieceGift()"
+      aria-label="Open the One Piece treasure chest"
+    >
+      <span class="treasure-lid"></span>
+      <span class="treasure-lock">🔒</span>
+      <span class="treasure-emblem">☠️</span>
+    </button>
+
+    <button
+      type="button"
+      class="treasure-button"
+      id="openOnePieceButton"
+      onclick="openOnePieceGift()"
+    >
+      Open Your Treasure 🎁
+    </button>
+
+    <div class="treasure-video-area" id="onePieceVideoArea" hidden>
+      <h2>HAPPY BIRTHDAY, MY PRINCE! 🎂💙</h2>
+      <p class="treasure-intro">
+        A little gift from your girl, made with all my love! 💋
+      </p>
+      <video
+        class="treasure-video"
+        id="video7"
+        controls
+        playsinline
+        preload="metadata"
+      >
+        <source src="onepiece-gift.mp4.mp4" type="video/mp4">
+        Your browser does not support this video.
+      </video>
+      <button
+        type="button"
+        class="replay-button"
+        onclick="replayOnePieceVideo()"
+      >
+        Replay My Surprise 💖
+      </button>
+    </div>
+
+    <button class="continue-button" type="button" onclick="showSlide(6)">
+      ← Back to My Letter 💌
+    </button>
+    <p class="footer">MY FAVOURITE TREASURE IS YOU ✦</p>
+  </div>
+</section>
+
+<script>
+/* Twinkling stars */
+const stars = document.getElementById("stars");
+
+for (let i = 0; i < 65; i++) {
+  const star = document.createElement("span");
+  star.className = "star";
+  star.style.left = Math.random() * 100 + "%";
+  star.style.top = Math.random() * 100 + "%";
+  star.style.animationDelay = Math.random() * 3 + "s";
+  star.style.animationDuration = (1.5 + Math.random() * 3) + "s";
+  stars.appendChild(star);
+}
+
+/* Flying blue butterflies */
+const butterflyArea = document.getElementById("butterflies");
+
+const butterflySVG = `
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <path d="M49 47 C29 7 4 14 13 39 C18 54 35 56 49 51"
+    fill="#79bfff" stroke="#c5e6ff" stroke-width="2"/>
+  <path d="M51 47 C71 7 96 14 87 39 C82 54 65 56 51 51"
+    fill="#a6d7ff" stroke="#e0f3ff" stroke-width="2"/>
+  <path d="M49 53 C23 44 18 70 35 77 C45 80 49 65 49 53"
+    fill="#3c91eb" stroke="#a8d7ff" stroke-width="2"/>
+  <path d="M51 53 C77 44 82 70 65 77 C55 80 51 65 51 53"
+    fill="#3c91eb" stroke="#a8d7ff" stroke-width="2"/>
+  <path d="M50 43 L50 66" stroke="#e8f6ff" stroke-width="4" stroke-linecap="round"/>
+  <path d="M49 43 Q39 24 33 29 M51 43 Q61 24 67 29"
+    fill="none" stroke="#e8f6ff" stroke-width="2" stroke-linecap="round"/>
+</svg>`;
+
+for (let i = 0; i < 10; i++) {
+  const butterfly = document.createElement("div");
+  butterfly.className = "butterfly";
+  butterfly.innerHTML = butterflySVG;
+
+  butterfly.style.setProperty("--size", (20 + Math.random() * 22) + "px");
+  butterfly.style.setProperty("--left", Math.random() * 95 + "%");
+  butterfly.style.setProperty("--top", Math.random() * 90 + "%");
+  butterfly.style.setProperty("--duration", (10 + Math.random() * 12) + "s");
+  butterfly.style.setProperty("--delay", (-Math.random() * 18) + "s");
+
+  butterfly.style.setProperty("--x1", (Math.random() * 100 - 50) + "px");
+  butterfly.style.setProperty("--y1", (Math.random() * 120 - 60) + "px");
+  butterfly.style.setProperty("--x2", (Math.random() * 160 - 80) + "px");
+  butterfly.style.setProperty("--y2", (Math.random() * 160 - 80) + "px"); 
+  butterfly.style.setProperty("--x3", (Math.random() * 120 - 60) + "px");
+  butterfly.style.setProperty("--y3", (Math.random() * 120 - 60) + "px");
+  butterfly.style.setProperty("--x4", (Math.random() * 160 - 80) + "px");
+  butterfly.style.setProperty("--y4", (Math.random() * 160 - 80) + "px");
+
+  butterflyArea.appendChild(butterfly);
+}
+
+/* Slide navigation */
+function showSlide(number) {
+  const target = document.getElementById("slide" + number);
+  if (!target) return;
+
+  document.querySelectorAll(".slide").forEach(function(slide) {
+    slide.classList.remove("active");
+  });
+
+  target.classList.add("active");
+  window.scrollTo(0, 0);
+
+  const video4 = document.getElementById("video4");
+  const video5 = document.getElementById("video5");
+  const video7 = document.getElementById("video7");
+
+  if (video4 && number !== 4) video4.pause();
+  if (video5 && number !== 5) video5.pause();
+  if (video7 && number !== 7) video7.pause();
+}
+
+/* Birthday gift button */
+function openBirthdayGift() {
+  const openButton = document.getElementById("openGiftButton");
+  const watchButton = document.getElementById("watchVideoButton");
+
+  if (openButton) openButton.hidden = true;
+  if (watchButton) watchButton.hidden = false;
+
+  createPinkHearts();
+}
+
+/* Floating hearts on the gift slide */
+function createPinkHearts() {
+  const slide = document.getElementById("slide3");
+
+  for (let i = 0; i < 18; i++) {
+    const heart = document.createElement("span");
+    heart.className = "pink-heart";
+    heart.textContent = "♡";
+    heart.style.setProperty("--left", Math.random() * 95 + "%");
+    heart.style.setProperty("--size", (15 + Math.random() * 24) + "px");
+    heart.style.setProperty("--duration", (5 + Math.random() * 5) + "s");
+    heart.style.setProperty("--delay", (Math.random() * 3) + "s");
+    slide.appendChild(heart);
+    setTimeout(() => heart.remove(), 11000);
+  }
+}
+
+/* Sparkles on Slide 5 */
+function createSlide5Sparkles() {
+  const slide = document.getElementById("slide5");
+
+  for (let i = 0; i < 28; i++) {
+    const sparkle = document.createElement("span");
+    sparkle.className = "slide5-sparkle";
+    sparkle.textContent = ["✦", "✨", "♡", "✧"][i % 4];
+    sparkle.style.left = (10 + Math.random() * 80) + "%";
+    sparkle.style.top = (15 + Math.random() * 70) + "%";
+    sparkle.style.color = ["#fff", "#e7a9ff", "#ffb9dd", "#c6b5ff"][i % 4];
+    sparkle.style.fontSize = (12 + Math.random() * 20) + "px";
+    sparkle.style.setProperty("--dx", (Math.random() * 120 - 60) + "px");
+    sparkle.style.setProperty("--dy", (Math.random() * 120 - 60) + "px");
+    slide.appendChild(sparkle);
+    setTimeout(() => sparkle.remove(), 1300);
+  }
+    }
+  
+  
+
+/* SLIDE 7 - ONE PIECE TREASURE REVEAL */
+function openOnePieceGift() {
+  const chest = document.getElementById("onePieceChest");
+  const button = document.getElementById("openOnePieceButton");
+  const videoArea = document.getElementById("onePieceVideoArea");
+  const video = document.getElementById("video7");
+
+  if (!chest || !button || !videoArea || !video) return;
+
+  chest.classList.add("opened");
+  button.hidden = true;
+  videoArea.hidden = false;
+
+  setTimeout(function () {
+    video.play().catch(function () {
+      // If autoplay is blocked, press Play on the video.
+    });
+  }, 800);
+}
+
+function replayOnePieceVideo() {
+  const video = document.getElementById("video7");
+  if (!video) return;
+  video.currentTime = 0;
+  video.play().catch(function () {
+    // Press Play on the video if needed.
+  });
+}
+
+</script>
+</body>
+</html>
