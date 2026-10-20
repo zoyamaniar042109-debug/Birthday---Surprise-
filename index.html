@@ -8,7 +8,9 @@
 <title>A Little World Made for You 💙</title>
 
 <style>
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 html, body {
   margin: 0;
@@ -71,6 +73,8 @@ body {
 }
 
 .slide-content {
+  position: relative;
+  z-index: 2;
   width: 100%;
   max-width: 560px;
   margin: auto;
@@ -84,6 +88,7 @@ body {
 .eyebrow {
   margin: 0 0 22px;
   color: #b8ddff;
+  font-family: Georgia, "Times New Roman", serif;
   font-size: 11px;
   line-height: 1.8;
   letter-spacing: 4px;
@@ -99,7 +104,9 @@ h1, h2 {
   text-shadow: 0 0 25px rgba(112,184,255,.4);
 }
 
-h2 { font-size: clamp(34px, 8vw, 49px); }
+h2 {
+  font-size: clamp(34px, 8vw, 49px);
+}
 
 .subtitle {
   max-width: 440px;
@@ -125,7 +132,7 @@ h2 { font-size: clamp(34px, 8vw, 49px); }
   45% { transform: scale(1.06); }
 }
 
-/* Original blue butterflies */
+/* Blue butterflies */
 .butterfly {
   position: absolute;
   left: var(--left);
@@ -145,13 +152,19 @@ h2 { font-size: clamp(34px, 8vw, 49px); }
 }
 
 @keyframes butterflyFly {
-  0% { opacity: 0; transform: translate(0,0) rotate(-15deg); }
+  0% {
+    opacity: 0;
+    transform: translate(0,0) rotate(-15deg);
+  }
   10% { opacity: .9; }
   25% { transform: translate(var(--x1),var(--y1)) rotate(18deg); }
   50% { transform: translate(var(--x2),var(--y2)) rotate(-12deg); }
   75% { transform: translate(var(--x3),var(--y3)) rotate(22deg); }
   90% { opacity: .85; }
-  100% { opacity: 0; transform: translate(var(--x4),var(--y4)) rotate(-15deg); }
+  100% {
+    opacity: 0;
+    transform: translate(var(--x4),var(--y4)) rotate(-15deg);
+  }
 }
 
 @keyframes wingFlap {
@@ -159,7 +172,7 @@ h2 { font-size: clamp(34px, 8vw, 49px); }
   to { scale: 1 1.08; }
 }
 
-/* Original rounded gradient buttons */
+/* Buttons */
 .continue-button {
   display: block;
   width: min(510px, 88%);
@@ -168,19 +181,33 @@ h2 { font-size: clamp(34px, 8vw, 49px); }
   padding: 16px 22px;
   border: 2px solid #dceaff;
   border-radius: 50px;
-  background: linear-gradient(110deg, #2867d9 0%, #6578f5 55%, #b36cf2 100%);
+  background: linear-gradient(
+    110deg,
+    #2867d9 0%,
+    #6578f5 55%,
+    #b36cf2 100%
+  );
   color: #fff;
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(17px, 4.5vw, 24px);
   line-height: 1.35;
   text-align: center;
-  box-shadow: 0 0 18px rgba(106,147,255,.28), 0 8px 24px rgba(144,101,255,.18);
+  box-shadow:
+    0 0 18px rgba(106,147,255,.28),
+    0 8px 24px rgba(144,101,255,.18);
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   transition: transform .2s ease, box-shadow .2s ease;
 }
 
-.continue-button:active { transform: scale(.97); }
+.continue-button:active {
+  transform: scale(.97);
+}
+
+.continue-button:disabled {
+  opacity: 1;
+  cursor: default;
+}
 
 .previous-button {
   display: block;
@@ -210,59 +237,36 @@ h2 { font-size: clamp(34px, 8vw, 49px); }
   letter-spacing: 2px;
 }
 
-/* Slides 3 and 4: matching purple backgrounds */
-#slide3, #slide4 {
-  background: radial-gradient(ellipse at center, #63265f 0%, #35132f 65%, #180b20 100%);
+/* Slide 3 and 4: matching purple backgrounds */
+#slide3,
+#slide4 {
+  background:
+    radial-gradient(ellipse at center, #63265f 0%, #35132f 65%, #180b20 100%);
 }
 
-#slide3 { overflow: hidden; }
-
-#slide3 .slide-content,
-#slide4 .slide-content {
-  position: relative;
-  z-index: 3;
-}
-
-#slide3 .eyebrow, #slide4 .eyebrow { color: #ffd1f0; }
-
-#slide3 h2, #slide4 h2 {
-  font-size: clamp(32px, 8vw, 45px);
-  text-shadow: 0 0 20px rgba(255,128,211,.3);
-}
-
-#slide3 .gift-photo {
+/* Slide 3 gift photo */
+.gift-photo {
   display: block;
-  width: min(100%, 330px);
-  max-height: 35svh;
+  width: min(100%, 390px);
+  max-height: 35vh;
+  margin: 22px auto;
   object-fit: contain;
-  margin: 16px auto;
   border-radius: 18px;
-  filter: drop-shadow(0 0 18px rgba(255,157,225,.35));
+  filter: drop-shadow(0 10px 22px rgba(0,0,0,.3));
 }
 
-#slide3 .subtitle, #slide4 .subtitle {
-  color: #ffe0f2;
-  margin-top: 14px;
-}
-
-#slide3 .gift-button, #slide4 .gift-button {
-  border-color: #ffe0f2;
-  background: linear-gradient(110deg, #c43d91, #f078b9, #e8b5ff);
-  color: white;
-  box-shadow: 0 0 22px rgba(255,133,211,.3);
-}
-
-#slide3 .previous-button, #slide4 .previous-button {
-  background: rgba(45,13,43,.8);
-  color: #ffe0f2;
-  border-color: rgba(255,220,245,.65);
+.gift-button {
+  background: linear-gradient(110deg, #d94f91, #a94bc5, #7958e8);
+  border-color: #ffd8f2;
+  box-shadow: 0 0 22px rgba(244,112,211,.25);
 }
 
 .pink-heart {
   position: absolute;
   z-index: 1;
   left: var(--left);
-  bottom: -40px;
+  bottom: -35px;
+  color: #ffc1e9;
   font-size: var(--size);
   opacity: 0;
   pointer-events: none;
@@ -270,44 +274,137 @@ h2 { font-size: clamp(34px, 8vw, 49px); }
 }
 
 @keyframes heartFloat {
-  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-  15% { opacity: .8; }
-  85% { opacity: .75; }
-  100% { transform: translateY(-115svh) rotate(25deg); opacity: 0; }
-}
-
-#slide3 .sparkle {
-  position: absolute;
-  z-index: 5;
-  pointer-events: none;
-  animation: sparklePop 1.1s ease-out forwards;
-}
-
-@keyframes sparklePop {
-  0% { opacity: 0; transform: translate(0,0) scale(.3) rotate(0deg); }
-  25% { opacity: 1; transform: translate(var(--dx),var(--dy)) scale(1.3) rotate(80deg); }
-  100% {
+  0% {
+    transform: translateY(0) rotate(0);
     opacity: 0;
-    transform: translate(calc(var(--dx) * 1.7),calc(var(--dy) * 1.7)) scale(.2) rotate(180deg);
+  }
+  15% { opacity: .7; }
+  85% { opacity: .7; }
+  100% {
+    transform: translateY(-110vh) rotate(35deg);
+    opacity: 0;
   }
 }
 
-#watchVideoButton[hidden] { display: none; }
-
-#slide4 .birthday-video {
-  display: block;
-  width: 100%;
-  max-width: 520px;
-  max-height: 55svh;
-  margin: 22px auto;
-  border: 2px solid rgba(255,220,245,.8);
-  border-radius: 16px;
-  background: #000;
-  object-fit: contain;
-  box-shadow: 0 0 24px rgba(255,133,211,.25);
+.sparkle {
+  position: absolute;
+  z-index: 5;
+  pointer-events: none;
+  animation: sparkleBurst 1.2s ease-out forwards;
 }
 
-#slide4 .footer { color: #f2b8df; }
+@keyframes sparkleBurst {
+  from {
+    opacity: 1;
+    transform: translate(0,0) scale(.5);
+  }
+  to {
+    opacity: 0;
+    transform: translate(var(--dx),var(--dy)) scale(1.6);
+  }
+}
+
+/* Slide 4 video */
+.birthday-video {
+  display: block;
+  width: 100%;
+  max-width: 440px;
+  max-height: 48vh;
+  margin: 22px auto;
+  border-radius: 18px;
+  background: rgba(0,0,0,.25);
+  box-shadow: 0 8px 28px rgba(0,0,0,.25);
+}
+
+/* Slide 5: pastel fairy surprise */
+#slide5 {
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(255,220,245,.9), transparent 40%),
+    radial-gradient(ellipse at 80% 25%, rgba(255,239,190,.9), transparent 42%),
+    radial-gradient(ellipse at 50% 85%, rgba(205,225,255,.95), transparent 45%),
+    linear-gradient(135deg, #f9dff2, #dcdfff, #fff0d2);
+  color: #50365f;
+  overflow: hidden;
+}
+
+#slide5 h2 {
+  color: #684276;
+  text-shadow: 0 0 18px rgba(255,255,255,.8);
+}
+
+#slide5 .eyebrow {
+  color: #79568b;
+}
+
+#slide5 .subtitle {
+  color: #684d75;
+}
+
+#slide5 .footer {
+  color: #79568b;
+}
+
+#slide5 .continue-button {
+  border-color: white;
+  background: linear-gradient(110deg, #d99bea, #a9b5ff, #ffd5e8);
+  color: #50365f;
+  box-shadow: 0 0 20px rgba(192,151,231,.45);
+}
+
+#slide5 .previous-button {
+  background: rgba(255,255,255,.65);
+  border-color: #bca4d0;
+  color: #684276;
+}
+
+.fairy-video {
+  display: block;
+  width: 100%;
+  max-width: 440px;
+  max-height: 42vh;
+  margin: 18px auto;
+  border-radius: 20px;
+  object-fit: contain;
+  background: rgba(255,255,255,.35);
+  box-shadow: 0 8px 28px rgba(113,76,145,.2);
+}
+
+.fairy {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  animation: fairyFloat var(--duration) ease-in-out infinite alternate;
+  animation-delay: var(--delay);
+  font-size: var(--size);
+  opacity: .65;
+}
+
+@keyframes fairyFloat {
+  from {
+    transform: translate(0,12px) rotate(-12deg);
+  }
+  to {
+    transform: translate(var(--drift),-45px) rotate(12deg);
+  }
+}
+
+.slide5-sparkle {
+  position: absolute;
+  pointer-events: none;
+  z-index: 5;
+  animation: slide5Sparkle 1.2s ease-out forwards;
+}
+
+@keyframes slide5Sparkle {
+  from {
+    opacity: 1;
+    transform: translate(0,0) scale(.5);
+  }
+  to {
+    opacity: 0;
+    transform: translate(var(--dx),var(--dy)) scale(1.6);
+  }
+}
 
 @media (max-width: 380px) {
   .slide { padding: 26px 16px; }
@@ -319,8 +416,6 @@ h2 { font-size: clamp(34px, 8vw, 49px); }
     padding: 14px 12px;
     font-size: 17px;
   }
-  #slide3 .gift-photo { max-height: 30svh; }
-  #slide4 .birthday-video { max-height: 48svh; }
 }
 
 @media (max-height: 720px) {
@@ -349,16 +444,22 @@ h2 { font-size: clamp(34px, 8vw, 49px); }
 <section class="slide active" id="slide1">
   <div class="slide-content">
     <p class="eyebrow">A little surprise for you</p>
+
     <h1>Happy Birthday<br>My Prince 💙</h1>
+
     <p class="subtitle">
       To my favourite person in this whole universe,
       you make my world a little more magical every day.
       This little surprise is made with all my love.
     </p>
+
     <div class="heart" aria-hidden="true">♡</div>
-    <button class="continue-button" type="button" onclick="showSlide(2)">
+
+    <button class="continue-button" type="button"
+      onclick="showSlide(2)">
       Begin with more surprises →
     </button>
+
     <p class="footer">MADE WITH LOVE, JUST FOR YOU ✦</p>
   </div>
 </section>
@@ -367,26 +468,36 @@ h2 { font-size: clamp(34px, 8vw, 49px); }
 <section class="slide" id="slide2">
   <div class="slide-content">
     <p class="eyebrow">✦ A little world made for you ✦</p>
+
     <div class="heart" aria-hidden="true">♡</div>
+
     <h2>Happy Birthday,<br>My Love 💙</h2>
+
     <p class="subtitle">
       If I could give you one thing in this world,
       it would be the chance to see yourself through my eyes.
     </p>
+
     <p class="subtitle">
       Maybe then you'd understand just how special
       you are to me. 🦋
     </p>
+
     <p class="subtitle">
       And this little universe? It's just the beginning
       of everything I want to show you. ♡
     </p>
-    <button class="continue-button" type="button" onclick="showSlide(3)">
+
+    <button class="continue-button" type="button"
+      onclick="showSlide(3)">
       There's More for You 💌
     </button>
-    <button class="previous-button" type="button" onclick="showSlide(1)">
+
+    <button class="previous-button" type="button"
+      onclick="showSlide(1)">
       ← Previous
     </button>
+
     <p class="footer">MADE WITH LOVE, JUST FOR YOU ✦</p>
   </div>
 </section>
@@ -395,18 +506,33 @@ h2 { font-size: clamp(34px, 8vw, 49px); }
 <section class="slide" id="slide3">
   <div class="slide-content">
     <p class="eyebrow">✦ A little gift for you ✦</p>
+
     <h2>Something Special<br>Is Waiting 🎁</h2>
-    <img class="gift-photo" src="gift-box.jpg..jpg" alt="A special birthday gift">
-    <p class="subtitle">Ready to open your surprise? 💗</p>
-    <button class="continue-button gift-button" id="openGiftButton"
-      type="button" onclick="openBirthdayGift()">
+
+    <img
+      class="gift-photo"
+      src="gift-box.jpg..jpg"
+      alt="A special birthday gift"
+    >
+
+    <p class="subtitle">
+      Ready to open your surprise? 💗
+    </p>
+
+    <button class="continue-button gift-button"
+      id="openGiftButton" type="button"
+      onclick="openBirthdayGift()">
       TAP TO OPEN THE BOX 🎁
     </button>
-    <button class="continue-button gift-button" id="watchVideoButton"
-      type="button" onclick="showSlide(4)" hidden>
+
+    <button class="continue-button gift-button"
+      id="watchVideoButton" type="button"
+      onclick="showSlide(4)" hidden>
       Watch Your Birthday Surprise 🎬 →
     </button>
-    <button class="previous-button" type="button" onclick="showSlide(2)">
+
+    <button class="previous-button" type="button"
+      onclick="showSlide(2)">
       ← Previous
     </button>
   </div>
@@ -416,24 +542,85 @@ h2 { font-size: clamp(34px, 8vw, 49px); }
 <section class="slide" id="slide4">
   <div class="slide-content">
     <p class="eyebrow">✦ Made with all my love ✦</p>
+
     <h2>Just for You,<br>My Prince 💙</h2>
-    <p class="subtitle">Press play and enjoy your little surprise. ♡</p>
-    <video class="birthday-video" id="video4" controls playsinline preload="metadata">
-      <source src="gemini_generated_video_e7915351.mp4" type="video/mp4">
+
+    <p class="subtitle">
+      Press play and enjoy your little surprise. ♡
+    </p>
+
+    <video class="birthday-video" id="video4"
+      controls playsinline preload="metadata">
+      <source src="gemini_generated_video_e7915351.mp4"
+        type="video/mp4">
       Your browser cannot play this video.
     </video>
-    <button class="continue-button gift-button" type="button" onclick="showSlide(3)">
+
+    <button class="continue-button gift-button"
+      type="button" onclick="showSlide(3)">
       ← Back to the Gift
     </button>
-    <button class="previous-button" type="button" onclick="showSlide(2)">
+
+    <button class="continue-button gift-button"
+      type="button" onclick="showSlide(5)">
+      Your Final Surprise 🧚 →
+    </button>
+
+    <button class="previous-button" type="button"
+      onclick="showSlide(2)">
       ← Previous
     </button>
+
+    <p class="footer">MADE WITH LOVE, JUST FOR YOU ✦</p>
+  </div>
+</section>
+
+<!-- SLIDE 5 -->
+<section class="slide" id="slide5">
+  <div class="slide-content">
+    <p class="eyebrow">✦ A little magic for you ✦</p>
+
+    <h2>Your Birthday<br>Fairy Surprise 🧚</h2>
+
+    <p class="subtitle">
+      A little bit of magic, a little bit of love,
+      and one more surprise made just for you. 🌙
+    </p>
+
+    <video
+      class="fairy-video"
+      id="video5"
+      controls
+      playsinline
+      preload="metadata">
+      <source
+        src="gemini_generated_video_c2f2162b.mp4"
+        type="video/mp4">
+      Your browser cannot play this video.
+    </video>
+
+    <p class="subtitle">
+      You make my world more magical. 💗
+    </p>
+
+    <button class="continue-button"
+      type="button"
+      onclick="createSlide5Sparkles()">
+      One More Little Magic ✨
+    </button>
+
+    <button class="previous-button"
+      type="button"
+      onclick="showSlide(4)">
+      ← Previous
+    </button>
+
     <p class="footer">MADE WITH LOVE, JUST FOR YOU ✦</p>
   </div>
 </section>
 
 <script>
-// Twinkling stars
+/* Twinkling stars */
 const stars = document.getElementById("stars");
 
 for (let i = 0; i < 65; i++) {
@@ -446,7 +633,7 @@ for (let i = 0; i < 65; i++) {
   stars.appendChild(star);
 }
 
-// Flying blue butterflies
+/* Flying blue butterflies */
 const butterflyArea = document.getElementById("butterflies");
 
 const butterflySVG = `
@@ -459,20 +646,24 @@ const butterflySVG = `
     fill="#3c91eb" stroke="#a8d7ff" stroke-width="2"/>
   <path d="M51 53 C77 44 82 70 65 77 C55 80 51 65 51 53"
     fill="#3c91eb" stroke="#a8d7ff" stroke-width="2"/>
-  <path d="M50 43 L50 66" stroke="#e8f6ff" stroke-width="4" stroke-linecap="round"/>
+  <path d="M50 43 L50 66" stroke="#e8f6ff"
+    stroke-width="4" stroke-linecap="round"/>
   <path d="M49 43 Q39 24 33 29 M51 43 Q61 24 67 29"
-    fill="none" stroke="#e8f6ff" stroke-width="2" stroke-linecap="round"/>
+    fill="none" stroke="#e8f6ff" stroke-width="2"
+    stroke-linecap="round"/>
 </svg>`;
 
 for (let i = 0; i < 10; i++) {
   const butterfly = document.createElement("div");
   butterfly.className = "butterfly";
   butterfly.innerHTML = butterflySVG;
+
   butterfly.style.setProperty("--size", (20 + Math.random() * 22) + "px");
   butterfly.style.setProperty("--left", Math.random() * 95 + "%");
   butterfly.style.setProperty("--top", Math.random() * 90 + "%");
   butterfly.style.setProperty("--duration", (10 + Math.random() * 12) + "s");
   butterfly.style.setProperty("--delay", (-Math.random() * 18) + "s");
+
   butterfly.style.setProperty("--x1", (Math.random() * 100 - 50) + "px");
   butterfly.style.setProperty("--y1", (Math.random() * 120 - 60) + "px");
   butterfly.style.setProperty("--x2", (Math.random() * 160 - 80) + "px");
@@ -481,30 +672,33 @@ for (let i = 0; i < 10; i++) {
   butterfly.style.setProperty("--y3", (Math.random() * 180 - 90) + "px");
   butterfly.style.setProperty("--x4", (Math.random() * 180 - 90) + "px");
   butterfly.style.setProperty("--y4", (Math.random() * 140 - 70) + "px");
+
   butterflyArea.appendChild(butterfly);
 }
 
-// Slide 3 floating hearts
+/* Slide 3 floating pink hearts */
 const slide3 = document.getElementById("slide3");
 
 for (let i = 0; i < 22; i++) {
   const heart = document.createElement("span");
   heart.className = "pink-heart";
   heart.textContent = Math.random() > 0.5 ? "💗" : "♡";
+
   heart.style.setProperty("--left", Math.random() * 96 + "%");
   heart.style.setProperty("--size", (14 + Math.random() * 18) + "px");
   heart.style.setProperty("--duration", (8 + Math.random() * 10) + "s");
   heart.style.setProperty("--delay", (-Math.random() * 15) + "s");
+
   slide3.appendChild(heart);
 }
 
-// Gift-opening sparkle effect
+/* Open the gift */
 function openBirthdayGift() {
   const slide = document.getElementById("slide3");
   const button = document.getElementById("openGiftButton");
   const nextButton = document.getElementById("watchVideoButton");
 
-  if (button.disabled) return;
+  if (!slide || !button || !nextButton || button.disabled) return;
 
   button.disabled = true;
   button.textContent = "SURPRISE! ✨💗";
@@ -515,19 +709,73 @@ function openBirthdayGift() {
     const sparkle = document.createElement("span");
     sparkle.className = "sparkle";
     sparkle.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+
     sparkle.style.left = (10 + Math.random() * 80) + "%";
     sparkle.style.top = (20 + Math.random() * 55) + "%";
     sparkle.style.setProperty("--dx", (Math.random() * 160 - 80) + "px");
     sparkle.style.setProperty("--dy", (Math.random() * 160 - 80) + "px");
+
     slide.appendChild(sparkle);
-    sparkle.addEventListener("animationend", () => sparkle.remove());
+
+    sparkle.addEventListener("animationend", function() {
+      sparkle.remove();
+    });
   }
 
   nextButton.hidden = false;
   nextButton.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 
-// Slide navigation
+/* Slide 5 floating fairies */
+const slide5 = document.getElementById("slide5");
+
+if (slide5) {
+  const fairySymbols = ["🧚", "✨", "🌙", "⭐", "🦋"];
+
+  for (let i = 0; i < 16; i++) {
+    const fairy = document.createElement("span");
+    fairy.className = "fairy";
+    fairy.textContent =
+      fairySymbols[Math.floor(Math.random() * fairySymbols.length)];
+
+    fairy.style.left = Math.random() * 95 + "%";
+    fairy.style.top = Math.random() * 85 + "%";
+    fairy.style.setProperty("--size", (12 + Math.random() * 17) + "px");
+    fairy.style.setProperty("--duration", (3 + Math.random() * 5) + "s");
+    fairy.style.setProperty("--delay", (-Math.random() * 6) + "s");
+    fairy.style.setProperty("--drift", (Math.random() * 70 - 35) + "px");
+
+    slide5.appendChild(fairy);
+  }
+}
+
+/* Slide 5 sparkle button */
+function createSlide5Sparkles() {
+  const slide = document.getElementById("slide5");
+  if (!slide) return;
+
+  const symbols = ["✨", "💖", "⭐", "🌸", "🦋"];
+
+  for (let i = 0; i < 28; i++) {
+    const sparkle = document.createElement("span");
+    sparkle.className = "slide5-sparkle";
+    sparkle.textContent =
+      symbols[Math.floor(Math.random() * symbols.length)];
+
+    sparkle.style.left = (10 + Math.random() * 80) + "%";
+    sparkle.style.top = (20 + Math.random() * 60) + "%";
+    sparkle.style.setProperty("--dx", (Math.random() * 180 - 90) + "px");
+    sparkle.style.setProperty("--dy", (Math.random() * 180 - 90) + "px");
+
+    slide.appendChild(sparkle);
+
+    sparkle.addEventListener("animationend", function() {
+      sparkle.remove();
+    });
+  }
+}
+
+/* Navigation between all five slides */
 function showSlide(number) {
   const target = document.getElementById("slide" + number);
   if (!target) return;
@@ -540,8 +788,14 @@ function showSlide(number) {
   window.scrollTo(0, 0);
 
   const video4 = document.getElementById("video4");
+  const video5 = document.getElementById("video5");
+
   if (video4 && number !== 4) {
     video4.pause();
+  }
+
+  if (video5 && number !== 5) {
+    video5.pause();
   }
 }
 </script>
