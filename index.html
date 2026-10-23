@@ -580,6 +580,37 @@ h2 { font-size: clamp(34px, 8vw, 49px); }
 }
 #slide7 .treasure-video-area[hidden] { display: none; }
 
+
+/* SLIDE 8: SECOND GIFT VIDEO */
+#slide8 {
+  background:
+    radial-gradient(ellipse at 20% 15%, rgba(255,221,151,.45), transparent 42%),
+    radial-gradient(ellipse at 80% 85%, rgba(113,169,255,.38), transparent 45%),
+    linear-gradient(145deg, #08142e, #243d70 55%, #10152e);
+  color: #fff4d7;
+}
+#slide8 h2 {
+  color: #ffe3a1;
+  text-shadow: 0 0 22px rgba(255,194,83,.4);
+}
+#slide8 .subtitle { color: #e7eaff; }
+#slide8 .second-gift-video {
+  display: block;
+  width: 100%;
+  max-width: 460px;
+  max-height: 55vh;
+  margin: 24px auto;
+  border: 2px solid #ffe3a1;
+  border-radius: 18px;
+  background: #050914;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+#slide8 .continue-button {
+  border-color: #fff0c7;
+  background: linear-gradient(110deg, #b77a2b, #f0ca72, #b77a2b);
+  color: #21162a;
+}
+
 </style>
 </head>
 
@@ -779,7 +810,7 @@ h2 { font-size: clamp(34px, 8vw, 49px); }
     </button>
     <button class="continue-button" type="button" onclick="showSlide(7)">
       Find Your Final Treasure 🎁 →
-</button>
+    </button>
 
     <p class="footer">MADE WITH LOVE, JUST FOR YOU ✦</p>
   </div>
@@ -842,10 +873,41 @@ h2 { font-size: clamp(34px, 8vw, 49px); }
       </button>
     </div>
 
+    <button class="continue-button" type="button" onclick="showSlide(8)">
+      Open Your Second Gift 🎁 →
+    </button>
     <button class="continue-button" type="button" onclick="showSlide(6)">
       ← Back to My Letter 💌
     </button>
     <p class="footer">MY FAVOURITE TREASURE IS YOU ✦</p>
+  </div>
+</section>
+
+
+<!-- SLIDE 8: SECOND GIFT VIDEO -->
+<section class="slide" id="slide8">
+  <div class="slide-content">
+    <p class="eyebrow">✦ ONE MORE SURPRISE FROM YOUR GIRL ✦</p>
+    <h2>Your Second Gift, My Prince 🎁</h2>
+    <p class="subtitle">
+      Because you deserve more than one surprise.
+      Here's another little gift, made with all my love. 💙
+    </p>
+
+    <video class="second-gift-video" id="video8" controls playsinline preload="metadata">
+      <source src="gemini_generated_video_4c64e976.mp4" type="video/mp4">
+      Your browser does not support this video.
+    </video>
+
+    <p class="subtitle">I hope this makes you smile, my love. ♡</p>
+
+    <button class="continue-button" type="button" onclick="replaySecondGift()">
+      Replay Your Second Gift 💖
+    </button>
+    <button class="continue-button" type="button" onclick="showSlide(7)">
+      ← Back to Your Treasure 🏴‍☠️
+    </button>
+    <p class="footer">ANOTHER LITTLE MEMORY, MADE WITH LOVE ✦</p>
   </div>
 </section>
 
@@ -919,10 +981,12 @@ function showSlide(number) {
   const video4 = document.getElementById("video4");
   const video5 = document.getElementById("video5");
   const video7 = document.getElementById("video7");
+  const video8 = document.getElementById("video8");
 
   if (video4 && number !== 4) video4.pause();
   if (video5 && number !== 5) video5.pause();
   if (video7 && number !== 7) video7.pause();
+  if (video8 && number !== 8) video8.pause();
 }
 
 /* Birthday gift button */
@@ -996,6 +1060,15 @@ function openOnePieceGift() {
 
 function replayOnePieceVideo() {
   const video = document.getElementById("video7");
+  if (!video) return;
+  video.currentTime = 0;
+  video.play().catch(function () {
+    // Press Play on the video if needed.
+  });
+}
+
+function replaySecondGift() {
+  const video = document.getElementById("video8");
   if (!video) return;
   video.currentTime = 0;
   video.play().catch(function () {
